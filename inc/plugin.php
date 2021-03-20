@@ -4,18 +4,19 @@
  * Uses Template redirect for setting the proper template to items
  * archives on Tainacan pages
  */
-if ( !function_exists('blocksy_tainacan_archive_templates_redirects') ) {
-    function blocksy_tainacan_archive_templates_redirects() {
+if ( !function_exists('tainacan_cmqueixadas_archive_templates_redirects') ) {
+    function tainacan_cmqueixadas_archive_templates_redirects() {
         global $wp_query;
+        
         if (is_post_type_archive()) {
-            
+   
             $collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
             $current_post_type = get_post_type();
-            
+
             if (in_array($current_post_type, $collections_post_types)) {
                 
                 if (is_post_type_archive()) { 			
-                    include( BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/tainacan/archive-items.php' );
+                    include( TAINACAN_CMQUEIXADAS_PLUGIN_DIR_PATH . 'tainacan/archive-items.php' );
                     exit;
                 } 
             }
@@ -26,28 +27,38 @@ if ( !function_exists('blocksy_tainacan_archive_templates_redirects') ) {
                 $tax_id = \Tainacan\Repositories\Taxonomies::get_instance()->get_id_by_db_identifier($term->taxonomy);
                 $tax = \Tainacan\Repositories\Taxonomies::get_instance()->fetch($tax_id);
                 
-                include( BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/tainacan/archive-taxonomy.php' );
+                include( TAINACAN_CMQUEIXADAS_PLUGIN_DIR_PATH . 'tainacan/archive-taxonomy.php' );
                 exit;
             }
         } else if ( $wp_query->get( 'tainacan_repository_archive' ) == 1 ) {
             
-            include( BLOCKSY_TAINACAN_PLUGIN_DIR_PATH . '/tainacan/archive-items.php' );
+            include( TAINACAN_CMQUEIXADAS_PLUGIN_DIR_PATH . 'tainacan/archive-items.php' );
             exit;
         }
         
     }
 }
-add_action('template_redirect', 'blocksy_tainacan_archive_templates_redirects');
+add_action('template_redirect', 'tainacan_cmqueixadas_archive_templates_redirects');
+
 
 /**
- * Uses Template redirect for setting the proper template to items
- * archives on Tainacan pages
+ * Renders the item single page with a custom template that will use most of Blocksy features
  */
-if ( !function_exists('blocksy_tainacan_update_extensions_paths') ) {
-    function blocksy_tainacan_update_extensions_paths($paths) {
-        return $paths;
-    }
-}
-add_filter( 'blocksy_extensions_paths', 'blocksy_tainacan_update_extensions_paths');
+if ( !function_exists('tainacan_cmqueixadas_the_content_for_items') ) {
+	function tainacan_cmqueixadas_the_content_for_items( $content ) {
+	
+		// This should only happen if we have Tainacan plugin installed
+		if ( defined ('TAINACAN_VERSION') ) {
+			$collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+			$post_type = get_post_type();
 
-?>
+			// Check if we're inside the main loop in a single Post.
+			if ( in_array($post_type, $collections_post_types) && is_singular() && in_the_loop() && is_main_query() ) {
+				return include(TAINACAN_CMQUEIXADAS_PLUGIN_DIR_PATH . 'tainacan/item-single-page.php' );
+			}
+		}
+	
+		return $content;
+	}
+}
+add_filter( 'the_content', 'tainacan_cmqueixadas_the_content_for_items', 11);

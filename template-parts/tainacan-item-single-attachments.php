@@ -15,42 +15,63 @@
             )
         );
     }
-    $prefix = blocksy_manager()->screen->get_prefix();
+    $prefix = '';
 
     // Galley mode is a shortname for when documents and attachments are displayed merged in the same list
     $is_gallery_mode = get_theme_mod($prefix . '_document_attachments_structure', 'gallery-type-1') == 'gallery-type-2';
     
     if (!function_exists('render_attachment_thumbnail_slide_item')) {
-        function render_attachment_thumbnail_slide_item($attachment) {
+        function render_attachment_thumbnail_slide_item($attachment, $render_link) {
             if ( function_exists('tainacan_get_attachment_html_url') ) {
                 $href = tainacan_get_attachment_html_url($attachment->ID);
             } else {
                 $href = wp_get_attachment_url($attachment->ID, 'full');
             }
-            if (!wp_get_attachment_image( $attachment->ID, 'blocksy-tainacan-item-attachments')) :
+            if (!wp_get_attachment_image( $attachment->ID, 'tainacan-cmqueixadas-item-attachments')) :
             ?>
                 <li class="tainacan-item-section__attachments-file swiper-slide">
-                    <a 
-                        class="attachment-without-image"
-                        href="<?php echo $href; ?>">
+                    <?php if ($render_link): ?>
+                        <a 
+                            class="attachment-without-image"
+                            href="<?php echo $href; ?>">
+                    <?php else: ?>
+                        <div class="attachment-without-image">
+                    <?php endif; ?>
                         <?php
-                            echo wp_get_attachment_image( $attachment->ID, 'blocksy-tainacan-item-attachments', true );
+                            echo wp_get_attachment_image( $attachment->ID, 'tainacan-cmqueixadas-item-attachments', true );
                         ?>
-                        <span class="swiper-slide-name <?php if (get_theme_mod( $prefix . '_hide_files_name', 'no') == 'yes') echo 'sr-only' ?>"><?php echo get_the_title( $attachment->ID ); ?></span>
-                    </a>
+                        <span class="swiper-slide-name <?php if (get_theme_mod( $prefix . '_hide_files_name', 'no') == 'yes') echo 'sr-only' ?>">
+                            <?php echo get_the_title( $attachment->ID ); ?>
+                            <span>
+                                <?php echo wp_get_attachment_caption( $attachment->ID ); ?>
+                            </span>
+                        </span>
+                    <?php if ($render_link): ?>
+                        </a>
+                    <?php else: ?>
+                        </div>
+                    <?php endif; ?>
                 </li>
             <?php 
                 else: 
-                $img_scr = wp_get_attachment_image_src( $attachment->ID, 'blocksy-tainacan-item-attachments', true );
+                $img_scr = wp_get_attachment_image_src( $attachment->ID, 'tainacan-cmqueixadas-item-attachments', true );
                 ?>
                 <li class="tainacan-item-section__attachments-file swiper-slide">
-                    <a 
-                        href="<?php echo $img_scr[0] ?>">
-                        <?php
-                            echo wp_get_attachment_image( $attachment->ID, 'blocksy-tainacan-item-attachments', true );
-                        ?>
-                        <span class="swiper-slide-name <?php if (get_theme_mod( $prefix . '_hide_files_name', 'no') == 'yes') echo 'sr-only' ?>"><?php echo get_the_title( $attachment->ID ); ?></span>
-                    </a>
+                    <?php if ($render_link): ?>
+                        <a href="<?php echo $img_scr[0] ?>">
+                    <?php endif; ?>
+                            <?php
+                                echo wp_get_attachment_image( $attachment->ID, 'tainacan-cmqueixadas-item-attachments', true );
+                            ?>
+                        <span class="swiper-slide-name <?php if (get_theme_mod( $prefix . '_hide_files_name', 'no') == 'yes') echo 'sr-only' ?>">
+                            <?php echo get_the_title( $attachment->ID ); ?>
+                            <span>
+                                <?php echo wp_get_attachment_caption( $attachment->ID ); ?>
+                            </span>
+                        </span>
+                    <?php if ($render_link): ?>
+                        </a>
+                    <?php endif; ?>
                 </li>
             <?php endif;
         }
@@ -60,14 +81,14 @@
 <?php if ( !empty( $attachments ) || ( $is_gallery_mode && tainacan_has_document() ) ) : ?>
 
     <section class="tainacan-item-section tainacan-item-section--<?php echo ((!$is_gallery_mode ? 'attachments' : 'gallery')) ?>">
-        <?php if ( (get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes') && (!$is_gallery_mode) && get_theme_mod($prefix . '_section_attachments_label', __( 'Attachments', 'blocksy-tainacan' )) != '' ) : ?>
+        <?php if ( (get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes') && (!$is_gallery_mode) && get_theme_mod($prefix . '_section_attachments_label', __( 'Attachments', 'tainacan-cmqueixadas' )) != '' ) : ?>
             <h2 class="tainacan-single-item-section" id="tainacan-item-attachments-label">
-                <?php echo esc_html( get_theme_mod($prefix . '_section_attachments_label', __( 'Attachments', 'blocksy-tainacan' ) ) ); ?>
+                <?php echo esc_html( get_theme_mod($prefix . '_section_attachments_label', __( 'Attachments', 'tainacan-cmqueixadas' ) ) ); ?>
             </h2>
         <?php endif; ?>
-        <?php if ( (get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes') && ($is_gallery_mode) && get_theme_mod($prefix . '_section_documents_label', __( 'Documents', 'blocksy-tainacan' )) != '') : ?>
+        <?php if ( (get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes') && ($is_gallery_mode) && get_theme_mod($prefix . '_section_documents_label', __( 'Documents', 'tainacan-cmqueixadas' )) != '') : ?>
             <h2 class="tainacan-single-item-section" id="tainacan-item-documents-label">
-                <?php echo esc_html( get_theme_mod($prefix . '_section_documents_label', __( 'Documents', 'blocksy-tainacan' )) ); ?>
+                <?php echo esc_html( get_theme_mod($prefix . '_section_documents_label', __( 'Documents', 'tainacan-cmqueixadas' )) ); ?>
             </h2>
         <?php endif; ?>
 
@@ -109,11 +130,11 @@
                                     <?php
                                         the_post_thumbnail('tainacan-medium');
                                     ?>
-                                    <span class="swiper-slide-name <?php if (get_theme_mod( $prefix . '_hide_files_name', 'no') == 'yes') echo 'sr-only' ?>"><?php echo __( 'Document', 'blocksy-tainacan' ); ?></span>
+                                    <span class="swiper-slide-name <?php if (get_theme_mod( $prefix . '_hide_files_name', 'no') == 'yes') echo 'sr-only' ?>"><?php echo __( 'Document', 'tainacan-cmqueixadas' ); ?></span>
                                 </li>
                             <?php endif; ?>
                             <?php foreach ( $attachments as $attachment ) {
-                                render_attachment_thumbnail_slide_item($attachment);
+                                render_attachment_thumbnail_slide_item($attachment, false);
                             } ?>
                         </ul>
                     </div>
@@ -126,7 +147,7 @@
                 <div class="swiper-container-thumbs swiper-container">
                     <ul class="swiper-wrapper">
                         <?php foreach ( $attachments as $attachment ) {
-                            render_attachment_thumbnail_slide_item($attachment);
+                            render_attachment_thumbnail_slide_item($attachment, true);
                         } ?>
                     </ul>
                 </div>

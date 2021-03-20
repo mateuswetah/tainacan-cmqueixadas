@@ -1,6 +1,6 @@
 <?php 
 
-$prefix = blocksy_manager()->screen->get_prefix();
+$prefix = '';
 
 $page_container_classes = 'page type-page hentry singular';
 $page_container_classes = $page_container_classes . ( get_theme_mod($prefix . '_filters_panel_background_style', 'boxed') == 'boxed' ? ' has-filters-panel-style-boxed' : '' );
@@ -61,11 +61,7 @@ $page_container_style .= 'background-color: var(--tainacan-background-color, #f8
                     $is_thumbnail_enabled = false;
                     $is_description_enabled = false;
 
-                    $hero_elements = blocksy_akg_or_customizer(
-                        'hero_elements',
-                        [ 'prefix' => $prefix ],
-                        []
-                    );
+                    $hero_elements = [];
                     foreach ($hero_elements as $index => $single_hero_element) {
                         if ($single_hero_element['id'] == 'custom_thumbnail' && $single_hero_element['enabled'] && has_post_thumbnail( tainacan_get_collection_id() )) {
                             $thumbnail_id = get_post_thumbnail_id( $post->ID );
@@ -78,33 +74,17 @@ $page_container_style .= 'background-color: var(--tainacan-background-color, #f8
                             ';
                         } else if ($single_hero_element['id'] == 'custom_description' && $single_hero_element['enabled'] && get_the_archive_description()) {
                             $description_class = 'page-description';
-                            $description_class .= ' ' . blocksy_visibility_classes(
-                                blocksy_akg(
-                                    'description_visibility',
-                                    $single_hero_element,
-                                    [
-                                        'desktop' => true,
-                                        'tablet' => true,
-                                        'mobile' => false,
-                                    ]
-                                )
-                            );
+                            $description_class .= '';
                             $description_element = '<div class="' . $description_class . '">' . get_the_archive_description() . '</div>';
                         }
                     }
 
                     $elements = 
                         $thumbnail_element . 
-                        blocksy_render_view(
-                            get_template_directory() . '/inc/components/hero/elements.php', [ 'type' => 'type-1' ]
-                        ) . 
+                        '' . 
                         $description_element;
                         
-                    echo blocksy_output_hero_section([
-                        'type' => 'type-1',
-                        'source' => false,
-                        'elements' => $elements
-                    ]);
+                    echo $elements;
                     
                 ?>
             </div>

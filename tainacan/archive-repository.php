@@ -44,7 +44,7 @@ $page_container_style .= 'background-color: var(--tainacan-background-color, #f8
         <header class="tainacan-collection-header">
             <div class="tainacan-collection-header__box">  
                 <?php 
-                    echo blocksy_output_hero_section( 'type-1' );
+                    echo '';
                 ?>
             </div>
         </header>

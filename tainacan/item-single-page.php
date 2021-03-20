@@ -7,11 +7,11 @@
  * @package BlocksyTainacan
  */
 
-$prefix = blocksy_manager()->screen->get_prefix();
+$prefix = '';
 
-do_action( 'blocksy-tainacan-single-item-top' ); 
+do_action( 'tainacan-cmqueixadas-single-item-top' ); 
 
-do_action( 'blocksy-tainacan-single-item-after-title' );
+do_action( 'tainacan-cmqueixadas-single-item-after-title' );
 
 $page_structure_type = get_theme_mod( $prefix . '_page_structure_type', 'type-dam');
 $template_columns_style = '';
@@ -33,14 +33,14 @@ if ($page_structure_type == 'type-gm' || $page_structure_type == 'type-mg') {
 
 <div class="<?php echo 'tainacan-item-single tainacan-item-single--layout-'. $page_structure_type ?>" style="<?php echo $template_columns_style ?>">
 <?php
-    blocksy_tainacan_get_template_part( 'template-parts/tainacan-item-single-document' );
-    do_action( 'blocksy-tainacan-single-item-after-document' );  
+    include(TAINACAN_CMQUEIXADAS_PLUGIN_DIR_PATH . 'template-parts/tainacan-item-single-document.php' );
+    do_action( 'tainacan-cmqueixadas-single-item-after-document' );  
 
-    blocksy_tainacan_get_template_part( 'template-parts/tainacan-item-single-attachments' );
-    do_action( 'blocksy-tainacan-single-item-after-attachments' );
+    include(TAINACAN_CMQUEIXADAS_PLUGIN_DIR_PATH . 'template-parts/tainacan-item-single-attachments.php' );
+    do_action( 'tainacan-cmqueixadas-single-item-after-attachments' );
     
-    blocksy_tainacan_get_template_part( 'template-parts/tainacan-item-single-metadata' );
-    do_action( 'blocksy-tainacan-single-item-after-metadata' );
+    include(TAINACAN_CMQUEIXADAS_PLUGIN_DIR_PATH . 'template-parts/tainacan-item-single-metadata.php' );
+    do_action( 'tainacan-cmqueixadas-single-item-after-metadata' );
 ?>
 </div>
 
@@ -55,4 +55,4 @@ if ($page_structure_type == 'type-gm' || $page_structure_type == 'type-mg') {
 ?>
 </div>
 
-<?php do_action( 'blocksy-tainacan-single-item-bottom' ); ?>
+<?php do_action( 'tainacan-cmqueixadas-single-item-bottom' ); ?>

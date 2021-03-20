@@ -55,11 +55,7 @@ $src = wp_get_attachment_image_src($image, 'full');
 
                 $thumbnail_element = '';
                 $is_thumbnail_enabled = false;
-                $hero_elements = blocksy_akg_or_customizer(
-                    'hero_elements',
-                    [ 'prefix' => 'tainacan-terms-items_archive' ],
-                    []
-                );
+                $hero_elements = [];
                 
                 foreach ($hero_elements as $index => $single_hero_element) {
                     if ($single_hero_element['id'] == 'custom_thumbnail') {
@@ -74,14 +70,8 @@ $src = wp_get_attachment_image_src($image, 'full');
                     ';
                 }
                 
-                $elements = $thumbnail_element . blocksy_render_view(
-                    get_template_directory() . '/inc/components/hero/elements.php', [ 'type' => 'type-1' ]
-                ); 
-                echo blocksy_output_hero_section([
-                    'type' => 'type-1',
-                    'source' => false,
-                    'elements' => $elements
-                ]);
+                $elements = $thumbnail_element . ''; 
+                echo $elements;
                 ?>
             </div>
         </header>

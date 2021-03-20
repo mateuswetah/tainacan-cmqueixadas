@@ -1,7 +1,7 @@
 {
-  "name": "blocksy-tainacan",
+  "name": "tainacan-cmqueixadas",
   "version": "0.1.0",
-  "description": "A Blocksy child theme compatible with Tainacan",
+  "description": "Plugin para integrar o Tainacan ao tema usado no site CMQueixadas",
   "main": "index.js",
   "scripts": {
     "compile-styles": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 sass/style.scss style.css",
@@ -10,14 +10,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tainacan/blocksy-tainacan.git"
+    "url": "git+https://github.com/mateuswetah/tainacan-cmqueixadas.git"
   },
   "author": "mateuswetah",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tainacan/blocksy-tainacan/issues"
-  },
-  "homepage": "https://github.com/tainacan/blocksy-tainacan#readme",
+  "homepage": "https://github.com/mateuswetah/tainacan-cmqueixadas#readme",
   "devDependencies": {
     "clean-css-cli": "^4.3.0",
     "node-sass": "^4.14.1"

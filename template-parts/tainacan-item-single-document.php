@@ -1,5 +1,5 @@
 <?php 
-    $prefix = blocksy_manager()->screen->get_prefix();
+    $prefix = '';
     
     // Galley mode is a shortname for when documents and attachments are displayed merged in the same list
     $is_gallery_mode = get_theme_mod($prefix . '_document_attachments_structure', 'gallery-type-1') == 'gallery-type-2';
@@ -7,9 +7,9 @@
 ?>
 <?php if ( tainacan_has_document() && !$is_gallery_mode ) : ?>
     <section class="tainacan-item-section tainacan-item-section--document">
-        <?php if ( get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes' && get_theme_mod($prefix . '_section_document_label', __( 'Document', 'blocksy-tainacan' )) != '' ) : ?>
+        <?php if ( get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes' && get_theme_mod($prefix . '_section_document_label', __( 'Document', 'tainacan-cmqueixadas' )) != '' ) : ?>
             <h2 class="tainacan-single-item-section" id="tainacan-item-document-label">
-                <?php echo esc_html( get_theme_mod($prefix . '_section_document_label', __( 'Document', 'blocksy-tainacan' ) ) ); ?>
+                <?php echo esc_html( get_theme_mod($prefix . '_section_document_label', __( 'Document', 'tainacan-cmqueixadas' ) ) ); ?>
             </h2>
         <?php endif; ?>
         <div class="tainacan-item-section__document">
