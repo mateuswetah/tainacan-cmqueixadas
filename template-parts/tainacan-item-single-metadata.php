@@ -1,17 +1,11 @@
-<?php 
-    $prefix = ''; 
-?>
-
 <section class="tainacan-item-section tainacan-item-section--metadata">
-    <?php if ( get_theme_mod($prefix . '_display_section_labels', 'yes') == 'yes' && get_theme_mod($prefix . '_section_metadata_label', __( 'Metadata', 'tainacan-cmqueixadas' )) != '' ) : ?>
-        <h2 class="tainacan-single-item-section" id="tainacan-item-metadata-label">
-            <?php echo esc_html( get_theme_mod($prefix . '_section_metadata_label', __( 'Metadata', 'tainacan-cmqueixadas' ) ) ); ?>
-        </h2>
-    <?php endif; ?>
-    <div class="tainacan-item-section__metadata <?php echo get_theme_mod($prefix . '_metadata_list_structure_type', 'metadata-type-1') ?>">
-        <?php if (has_post_thumbnail() && (get_theme_mod($prefix . '_show_thumbnail', 'no') === 'yes') ): ?>
+    <h2 class="tainacan-single-item-section" id="tainacan-item-metadata-label">
+        <?php echo __( 'Informações', 'tainacan-cmqueixadas' ); ?>
+    </h2>
+    <div class="tainacan-item-section__metadata">
+        <?php if ( has_post_thumbnail() ): ?>
             <div class="tainacan-item-section__metadata-thumbnail">
-                <h3 class="tainacan-metadata-label"><?php _e( 'Thumbnail', 'tainacan-cmqueixadas' ); ?></h3>
+                <h3 class="tainacan-metadata-label"><?php _e( 'Miniatura', 'tainacan-cmqueixadas' ); ?></h3>
                 <p class="tainacan-metadata-value"><?php the_post_thumbnail('tainacan-medium-full'); ?></p>
             </div>
         <?php endif; ?>
@@ -23,7 +17,7 @@
                 'after_title' => '</h3>',
                 'before_value' => '<p class="tainacan-metadata-value">',
                 'after_value' => '</p>',
-                'exclude_title' => (get_theme_mod($prefix . '_show_title_metadata', 'yes') === 'no')
+                'exclude_title' => true
             );
             tainacan_the_metadata( $args );
         ?>

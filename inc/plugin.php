@@ -9,7 +9,7 @@ if ( !function_exists('tainacan_cmqueixadas_archive_templates_redirects') ) {
         global $wp_query;
         
         if (is_post_type_archive()) {
-   
+            
             $collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
             $current_post_type = get_post_type();
 
