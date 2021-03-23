@@ -20,7 +20,7 @@
                     'show_filters_button_inside_search_control' => true,
                     'filters_as_modal' => false,
                     'hide_search' => false,
-                    'hide_advanced_search' => false,
+                    'hide_advanced_search' => true,
                     'hide_sorting_area' => false,
                     'hide_sort_by_button' => false,
                     'hide_displayed_metadata_dropdown' => false,

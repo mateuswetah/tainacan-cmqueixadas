@@ -12,11 +12,14 @@
 /* Remaining imports */
 /* Tainacan Items list customization */
 .theme-items-list {
-  --tainacan-font-family: var(--fontFamily, inherit);
-  --tainacan-base-font-size: var(--fontSize, 1em);
-  --tainacan-item-heading-hover-background-color: var(--tainacan-item-background-color, white);
-  --tainacan-input-border-color: var(--formBorderInitialColor, #e0e5eb);
-  --tainacan-skeleton-color: var(--tainacan-item-background-color, white);
+  --tainacan-secondary: #b6181e;
+  --tainacan-primary: #e0cacb;
+  --boxShadow: 6px 6px black;
+  --tainacan-item-background-color: white;
+  --tainacan-item-hover-background-color: white;
+  --tainacan-item-heading-hover-background-color: white;
+  --tainacan-filter-menu-width-theme: 20vw;
+  --tainacan-success: #333;
   /* Search control */
   /* Filters panel */
   /* Items list container */
@@ -28,56 +31,70 @@
   justify-content: center;
   top: -52px !important;
   background: transparent !important;
-  padding: 6px 13px;
-  flex-wrap: wrap;
-  display: flex;
-  display: -ms-grid;
-  display: grid;
-  grid-template-columns: 0fr 100% 1fr;
-  grid-template-rows: auto 1fr;
-  grid-template-areas: ". searchcontrol ." "itemslist itemslist itemslist";
+  padding: 0;
 }
 
 .theme-items-list .search-control {
-  grid-area: searchcontrol;
-  border-radius: 0 0 var(--borderRadius, 3px) var(--borderRadius, 3px);
-  padding: 20px 20px 6px 20px !important;
-  margin: 5px;
+  --tainacan-background-color: #000;
+  --tainacan-input-color: white;
+  --tainacan-input-background-color: #111;
+  --tainacan-input-border-color: #222;
+  --tainacan-label-color: #eee;
+  --tainacan-info-color: #ddd;
+  --tainacan-heading-color: white;
+  --tainacan-primary: #b6181e;
+  background-repeat: repeat;
+  background-color: var(--tainacan-background-color, #000);
+  padding: 26px 20px 2px 20px !important;
+  margin: 0px;
 }
 
 .theme-items-list .search-control .search-control-item {
   margin-bottom: 20px !important;
 }
 
-.theme-items-list .search-control .control.has-icons-right .icon .mdi-magnify::before {
-  color: var(--tainacan-secondary, #3eaf7c);
+.theme-items-list .search-control .search-area input {
+  background-color: var(--tainacan-secondary) !important;
+  border: var(--tainacan-input-border-color) !important;
+  color: var(--tainacan-input-color) !important;
+}
+
+.theme-items-list .search-control .search-area .control.has-icons-right .icon .mdi-magnify::before {
+  color: white;
+}
+
+.theme-items-list .search-control .button {
+  border-radius: 0px !important;
 }
 
 .theme-items-list #filters-modal {
-  grid-area: itemslist;
-  justify-self: start;
-  align-self: normal;
   width: 100%;
+  box-shadow: var(--boxShadow, 6px 6px black);
 }
 
 .theme-items-list #filters-modal .modal-content {
-  padding: 16px 10px;
+  padding: 0;
 }
 
 @media screen and (max-width: 768px) {
   .theme-items-list #filters-modal .modal-content {
-    padding: 16px 10px 16px 12vw;
+    padding: 0px 0px 0px 6vw;
   }
 }
 
 .theme-items-list #filters-modal .modal-content #filters-items-list {
-  background-color: var(--backgroundColor, #f8f9fb);
+  background-color: var(--backgroundColor, #f2f2f2);
+  border: 1px solid #cbcbcb;
   padding: 20px;
-  margin: -3px;
+  margin: 0px;
 }
 
 .theme-items-list #filters-modal .modal-content #filters-items-list .filters-components-list {
   margin-bottom: 24px;
+}
+
+.theme-items-list #filters-modal .loading-background {
+  background: transparent;
 }
 
 .theme-items-list #filters-modal.tainacan-filter-list-fixed {
@@ -85,10 +102,19 @@
 }
 
 .theme-items-list #items-list-area {
-  grid-area: itemslist;
-  justify-self: end;
-  align-self: normal;
+  padding: 6px 4px;
   width: 100%;
+}
+
+.theme-items-list #items-list-area .filter-tags-list {
+  padding: 6px 12px 12px 12px;
+  background-color: var(--backgroundColor, #f2f2f2);
+  border: 1px solid #cbcbcb;
+  margin: -7px;
+  box-shadow: 0px 3px #000;
+  width: calc(100% + 14px);
+  position: relative;
+  z-index: 99999;
 }
 
 .theme-items-list #items-list-area #items-list-results {
@@ -108,10 +134,21 @@
 .theme-items-list #items-list-area #items-list-results .tainacan-records-container .tainacan-record,
 .theme-items-list #items-list-area #items-list-results .tainacan-cards-container .tainacan-card,
 .theme-items-list #items-list-area #items-list-results .tainacan-list-container .tainacan-list {
-  border-radius: var(--borderRadius, 3px);
-  box-shadow: var(--boxShadow, 0px 12px 18px -6px rgba(34, 56, 101, 0.04));
-  border: var(--border, none);
+  border-radius: 0;
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--tainacan-item-background-color, white);
+  box-shadow: var(--boxShadow, 6px 6px black);
   overflow: hidden;
+  transition: box-shadow ease 0.3s, border-color ease 0.3s;
+}
+
+.theme-items-list #items-list-area #items-list-results .tainacan-masonry-container .tainacan-masonry-item:hover,
+.theme-items-list #items-list-area #items-list-results .tainacan-records-container .tainacan-record:hover,
+.theme-items-list #items-list-area #items-list-results .tainacan-cards-container .tainacan-card:hover,
+.theme-items-list #items-list-area #items-list-results .tainacan-list-container .tainacan-list:hover {
+  box-shadow: -5px 5px black;
+  border-color: black;
 }
 
 .theme-items-list #items-list-area #items-list-results .tainacan-masonry-container .tainacan-masonry-item .metadata-title p,
@@ -160,21 +197,13 @@
   padding: 0 12px;
 }
 
-.theme-items-list #items-list-area #items-list-results .tainacan-table .column-main-content p {
-  font-weight: 500;
-}
-
-.theme-items-list #items-list-area #items-list-results .tainacan-table td p {
-  font-size: 0.725em !important;
-}
-
 .theme-items-list #items-list-area #items-list-results .tainacan-slide-main-view iframe {
   border: none;
-  border-radius: var(--borderRadius, 3px);
+  border-radius: 0;
 }
 
 .theme-items-list #items-list-area #items-list-results .tainacan-slides-list .swiper-slide img {
-  border-radius: var(--borderRadius, 3px);
+  border-radius: 0;
   padding-bottom: 0;
 }
 
@@ -182,41 +211,59 @@
   border-top: none;
   margin-left: 12px;
   margin-right: 12px;
+  --tainacan-background-color: #000;
+  --tainacan-input-color: white;
+  --tainacan-input-background-color: #111;
+  --tainacan-input-border-color: #222;
+  --tainacan-label-color: #eee;
+  --tainacan-info-color: #ddd;
+  --tainacan-heading-color: white;
+  --tainacan-black: white;
+  --tainacan-white: black;
 }
 
 .theme-items-list #items-list-area #items-list-results .pagination-area .pagination {
-  font-weight: bold;
-  --colorActive: #ffffff;
+  padding: 3px;
+  line-height: 35px;
+  top: 1px;
+}
+
+.theme-items-list #items-list-area #items-list-results .pagination-area .pagination span,
+.theme-items-list #items-list-area #items-list-results .pagination-area .pagination a {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  height: 1.5rem;
+  width: 1.5rem;
+  float: none;
 }
 
 .theme-items-list #items-list-area #items-list-results .pagination-area .pagination .pagination-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-  width: 42px;
-  border-radius: 4px;
-  border: 2px solid transparent;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color);
-  --linkInitialColor: var(--color);
-  transition: color 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955), background 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955), border-color 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-}
-
-.theme-items-list #items-list-area #items-list-results .pagination-area .pagination .pagination-link:hover {
-  text-decoration: none;
-  border-color: var(--linkHoverColor);
-  color: var(--linkHoverColor);
+  background: white;
+  color: black !important;
 }
 
 .theme-items-list #items-list-area #items-list-results .pagination-area .pagination .pagination-link.is-current {
-  color: var(--colorActive) !important;
-  background: var(--linkHoverColor);
+  font-weight: bold;
+}
+
+.theme-items-list #items-list-area #items-list-results .pagination-area .select select {
+  background: none !important;
+  color: white;
 }
 
 .theme-items-list .advanced-search-criteria-title hr {
   display: none;
+}
+
+.theme-items-list .control.has-icons-right .input,
+.theme-items-list .control.has-icons-right .select select {
+  padding-right: 2.5em !important;
+}
+
+.theme-items-list .control.has-icons-left .input,
+.theme-items-list .control.has-icons-left .select select {
+  padding-left: 2.5em !important;
 }
 
 .theme-items-list input.input,
@@ -237,35 +284,31 @@
 .theme-items-list input[type="time"].input,
 .theme-items-list input[type="url"].input,
 .theme-items-list input[type="week"].input {
-  border-radius: var(--borderRadius, 3px) !important;
+  border-radius: 0 !important;
   border: 1px solid var(--tainacan-input-border-color);
 }
 
 /* Extra classes applied from customizer */
 .page.has-filters-panel-style-boxed #filters-modal .modal-content #filters-items-list {
-  border-radius: var(--borderRadius, 3px);
+  border-radius: 0;
   background-color: var(--tainacan-item-background-color, white);
-  box-shadow: var(--boxShadow, 0px 12px 18px -6px rgba(34, 56, 101, 0.04));
+  box-shadow: var(--boxShadow, 6px 6px black);
 }
 
 /* Tooltips and Modals are outside of the items list div */
 body:not(.tainacan-admin-page) .tooltip,
 body:not(.tainacan-admin-page) .tainacan-modal-content {
-  --tainacan-font-family: var(--fontFamily, inherit);
-  --tainacan-base-font-size: var(--fontSize, 1em);
-  --tainacan-secondary: var(--paletteColor1, #3eaf7c);
-  --tainacan-primary: var(--formBorderInitialColor, #e0e5eb);
-  --tainacan-background-color: var(--backgroundColor, #f8f9fb);
-  --tainacan-input-color: var(--color, rgba(44, 62, 80, 0.9));
-  --tainacan-input-background-color: var(--formBackgroundInitialColor, white);
-  --tainacan-input-border-color: var(--formBorderInitialColor, #e0e5eb);
-  --tainacan-label-color: var(--color, rgba(44, 62, 80, 0.9));
-  --tainacan-info-color: var(--color, rgba(44, 62, 80, 0.9));
-  --tainacan-heading-color: var(--headingColor, rgba(44, 62, 80, 1));
+  --tainacan-secondary: #b6181e;
+  --tainacan-primary: #b89a9b;
+  --boxShadow: 6px 6px black;
+  --tainacan-item-background-color: white;
+  --tainacan-item-hover-background-color: white;
+  --tainacan-item-heading-hover-background-color: white;
+  --tainacan-success: #333;
 }
 
 body:not(.tainacan-admin-page) .tainacan-modal-content {
-  border-radius: var(--borderRadius, 6px);
+  border-radius: 0;
 }
 
 body:not(.tainacan-admin-page) .tainacan-modal-content .tainacan-modal-title hr {
@@ -280,6 +323,10 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   background-color: var(--tainacan-item-background-color, white);
 }
 
+body:not(.tainacan-admin-page) .tainacan-modal-content .button {
+  border-radius: 0px !important;
+}
+
 /* Collection Items List */
 .tainacan-collection-header {
   display: flex;
@@ -292,7 +339,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   background-repeat: no-repeat;
   --headingColor: var(--tainacan-heading-color, rgba(44, 62, 80, 1));
   --color: var(--tainacan-label-color, #454647);
-  --linkInitialColor: var(--tainacan-secondary, #3eaf7c);
+  --linkInitialColor: #b6181e;
 }
 
 .tainacan-collection-header .tainacan-collection-header__box {
@@ -321,7 +368,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 }
 
 .tainacan-collection-header .tainacan-collection-header__box .collection-thumbnail img {
-  border-radius: var(--borderRadius, 3px);
+  border-radius: 0;
 }
 
 .page.has-page-header-style-boxed .theme-items-list:not(.is-fullscreen) {
@@ -330,14 +377,14 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 
 .page.has-page-header-style-boxed .tainacan-collection-header .tainacan-collection-header__box {
   width: var(--maxSiteWidth, 1290px);
-  border-radius: var(--borderRadius, 3px) var(--borderRadius, 3px) 0 0;
+  border-radius: 0;
   background-color: var(--tainacan-item-background-color, #fff);
   box-shadow: var(--boxShadow, 0 12px 18px -6px rgba(34, 56, 101, 0.04));
 }
 
 .page.has-page-header-style-boxed .search-control {
   background-color: var(--tainacan-item-background-color, white);
-  box-shadow: var(--boxShadow, 0px 12px 18px -6px rgba(34, 56, 101, 0.04));
+  box-shadow: var(--boxShadow, 6px 6px black);
 }
 
 /* Single Item Page */
@@ -413,11 +460,12 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 .tainacan-item-single .tainacan-single-item-section {
   text-align: var(--section-alignment, left);
   font-size: 1.55rem;
+  margin-bottom: 1.5rem;
 }
 
 .tainacan-item-single .tainacan-media-component {
-  --swiper-theme-color: var(--paletteColor1, #3eaf7c);
-  --swiper-navigation-color: var(--paletteColor1, #3eaf7c);
+  --swiper-theme-color: #b6181e;
+  --swiper-navigation-color: #b6181e;
   --swiper-navigation-size: 2.5rem;
   --tainacan-media-background: var(--background-color, #ffffff);
   --tainacan-media-main-carousel-height: 60vh;
@@ -433,6 +481,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 
 .tainacan-item-single .tainacan-media-component .tainacan-media-component__swiper-thumbs img {
   border-radius: var(--borderRadius, 3px);
+  border-color: transparent;
   border-bottom: 4px solid transparent;
   margin-bottom: 4px;
   transition: border 0.3s ease;
@@ -441,15 +490,6 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
 .tainacan-item-single .tainacan-media-component .tainacan-media-component__swiper-thumbs .swiper-slide-metadata {
   display: block;
   margin-top: 0.5rem;
-  font-family: var(--fontFamily);
-  font-size: var(--fontSize);
-  font-weight: var(--fontWeight);
-  font-style: var(--fontStyle, inherit);
-  line-height: var(--lineHeight);
-  letter-spacing: var(--letterSpacing);
-  text-transform: var(--textTransform);
-  -webkit-text-decoration: var(--textDecoration);
-  text-decoration: var(--textDecoration);
 }
 
 .tainacan-item-single .tainacan-item-section__metadata {
@@ -606,7 +646,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   right: calc(50% - 18px);
   cursor: pointer;
   font-size: 0;
-  background-color: var(--paletteColor1, #3eaf7c);
+  background-color: #b6181e;
   color: white;
   transition: opacity 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
 }
@@ -617,6 +657,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .modal-card-body {
   display: block;
   position: relative;
   z-index: 99;
+  background-color: transparent;
 }
 
 .tainacan-item-single .tainacan-item-file-download::after {
