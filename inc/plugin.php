@@ -32,7 +32,7 @@ if ( !function_exists('tainacan_cmqueixadas_archive_templates_redirects') ) {
             }
         } else if ( $wp_query->get( 'tainacan_repository_archive' ) == 1 ) {
             
-            include( TAINACAN_CMQUEIXADAS_PLUGIN_DIR_PATH . 'tainacan/archive-items.php' );
+            include( TAINACAN_CMQUEIXADAS_PLUGIN_DIR_PATH . 'tainacan/archive-repository.php' );
             exit;
         } else if ( is_single() && is_singular() && is_main_query() ) {
             $collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();

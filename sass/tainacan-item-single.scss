@@ -1,5 +1,11 @@
 
 /* Single Item Page */
+.tainacan-item-title {
+    text-align: left !important;
+    font-size: 2.25rem !important;
+    letter-spacing: 2px;
+    margin-left: 0 !important;
+}
 .tainacan-item-single {
     
     // Overall page layout structure -------------------
@@ -74,7 +80,8 @@
     // Headings and spacing ----------------------------
     .tainacan-single-item-section {
         text-align: var(--section-alignment, left);
-        font-size: 1.55rem;
+        font-size: 1.85rem;
+        letter-spacing: 2px;
         margin-bottom: 1.5rem;
     }
 
@@ -90,16 +97,33 @@
         --tainacan-media-thumbs-carousel-width: 100%;
         --tainacan-media-thumbs-carousel-item-size: var(--attachments-size,140px);
 
+        .tainacan-media-component__swiper-main {
+
+            ul.swiper-wrapper[data-pswp-uid] li.swiper-slide {
+                margin-left: 0;
+                margin-right: 0;
+
+                img {
+                    box-shadow: 2px 2px black;
+                    transition: box-shadow ease 0.2s;
+
+                    &:hover {
+                        box-shadow: 4px 4px black;
+                    }
+                }
+            }
+        }
         .tainacan-media-component__swiper-thumbs {
             font-weight: normal;
             transition: font-weight 0.3s ease;
     
             img {
-                border-radius: var(--borderRadius, 3px);
-                border-color: transparent;
-                border-bottom: 4px solid transparent;
                 margin-bottom: 4px;
                 transition: border 0.3s ease;
+                border-radius: var(--borderRadius, 0px) !important;
+                border-color: black;
+                border-bottom: 4px solid black;
+                box-shadow: 4px 2px black;
             }
 
             .swiper-slide-metadata {
@@ -167,18 +191,24 @@
         }
         .tainacan-metadata-label {
             text-align: var(--metadata-label-alignment, left);
+            font-family: 'montserrat','HelveticaNeue','Helvetica Neue','Helvetica-Neue',Helvetica,Arial,sans-serif !important;
             font-size: 1.125rem;
+            margin-top: 0.5rem;
         }
         .tainacan-metadata-value {
             text-align: var(--metadata-value-alignment, left);
             font-family: var(--fontFamily);
             font-size: var(--fontSize);
-            margin-bottom: 0.75rem;
+            margin-top: 0;
+            margin-bottom: 0.25rem;
             padding-bottom: 0.75rem;
             border-bottom: var(--metadata-value-border, 0px solid rgba(125, 125, 125, 0.5));
         }
         .tainacan-item-section__metadata-thumbnail img {
-            border-radius: var(--borderRadius, 3px);
+            border-radius: var(--borderRadius, 0px) !important;
+            border-color: black;
+            border-bottom: 4px solid black;
+            box-shadow: 4px 2px black;
         }
 
         // Metadata type textarea has different separator

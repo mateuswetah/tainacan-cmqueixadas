@@ -54,22 +54,57 @@ if ( !function_exists('tainacan_cmqueixadas_get_adjacent_item_links') ) {
 
 		// Creates the links
 		$previous = $previous_link_url === false ? '' : (
-			'<a href="' . $previous_link_url .'" rel="prev" class="nav-item-prev"> ' .
-				$previous_post_image_output .
-				'<div class="item-content">' .
-					'<span class="item-label">' . __( 'Previous item', 'tainacan-cmqueixadas' )	. '</span>' .
-					!empty( $previous_title ) ? ('<span class="item-title">' . $previous_title . '</span>') : '' .
-				'</div>'.
-			'</a>');
+			'<a 
+					class="avia-post-nav avia-post-prev ' . (!empty($previous_post_image_output) ? 'with-image' : '') . '"
+					href="'. $previous_link_url . '">
+				<span 
+						class="label iconfont"
+						aria-hidden="true"
+						data-av_icon=""
+						data-av_iconfont="entypo-fontello">
+				</span>
+				<span class="entry-info-wrap">
+					<span class="entry-info">
+						<span class="entry-title">' . (!empty( $previous_title ) ? $previous_title : '') .'</span>
+						<span class="entry-image">
+							<img 
+									src="' . $previous_post_image_output . '"
+									class="attachment-thumbnail size-thumbnail wp-post-image"
+									alt=""
+									loading="lazy"
+									width="80"
+									height="80">
+						</span>
+					</span>
+				</span>
+			</a>');
 
 		$next = $next_link_url === false ? '' : (
-			'<a href="' . $next_link_url .'" rel="prev" class="nav-item-next"> ' .
-				'<div class="item-content">' .
-					'<span class="item-label">' . __( 'Next item', 'tainacan-cmqueixadas') . '</span>' .
-					!empty( $next_title ) ? ('<span class="item-title">' . $next_title . '</span>') : '' .
-				'</div>' .
-				$next_post_image_output .
-			'</a>');
+			'<a 
+					class="avia-post-nav avia-post-next ' . (!empty($next_post_image_output) ? 'with-image' : '') . '"
+					href="'. $next_link_url . '">
+				<span 
+						class="label iconfont"
+						aria-hidden="true"
+						data-av_icon=""
+						data-av_iconfont="entypo-fontello">
+				</span>
+				<span class="entry-info-wrap">
+					<span class="entry-info">
+						<span class="entry-image">
+							<img 
+									src="' . $next_post_image_output . '"
+									class="attachment-thumbnail size-thumbnail wp-post-image"
+									alt=""
+									loading="lazy"
+									width="80"
+									height="80">
+						</span>
+						<span class="entry-title">' . (!empty( $next_title ) ? $next_title : '') .'</span>
+					</span>
+				</span>
+			</a>'
+		);
 
 		return ['next' => $next, 'previous' => $previous];
 	}
@@ -95,18 +130,16 @@ if ( !function_exists('tainacan_cmqueixadas_item_navigation') ) {
 		
 		?>
 			<?php if ($previous !== '' || $next !== '') : ?>
-				<nav class="">
-				<?php if ( $previous !== '' ) {
+			<nav class="tainacan-single-item__post-navigation">
+			<?php
+				if ( $previous !== '' ) {
 					echo $previous;
-				} else { ?>
-					<div class="nav-item-prev"></div>
-				<?php } ?>
+				}
 
-				<?php if ( $next !== '' ) {
+				if ( $next !== '' ) {
 					echo $next;
-				} else { ?>
-					<div class="nav-item-next"></div>
-				<?php } ?>
+				}
+				?>
 			</nav>
 			<?php endif; ?>
 		<?

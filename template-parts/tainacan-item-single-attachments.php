@@ -14,7 +14,7 @@
     ?>
         <section class="tainacan-item-section tainacan-item-section--<?php echo ((!$is_gallery_mode ? 'attachments' : 'gallery')) ?>">
             <h2 class="tainacan-single-item-section" id="tainacan-item-documents-label">
-                <?php echo __( 'Documentos', 'tainacan-cmqueixadas' ); ?>
+                <?php echo ($attachments && count($attachments) ? __( 'Documentos', 'tainacan-cmqueixadas' ) : __( 'Documento', 'tainacan-cmqueixadas' )); ?>
             </h2>
 
             <?php 

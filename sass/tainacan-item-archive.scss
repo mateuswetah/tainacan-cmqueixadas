@@ -11,14 +11,13 @@
     
     &:not(.is-fullscreen) {
         justify-content: center;
-        top: -52px !important;
         background: transparent !important;
         padding: 0;
     }
 
     /* Search control */
     .search-control {
-        --tainacan-background-color: #000;
+        --tainacan-background-color: #080707;
         --tainacan-input-color: white;
         --tainacan-input-background-color: #111;
         --tainacan-input-border-color: #222;
@@ -59,6 +58,10 @@
         .modal-content {
             padding: 0;
 
+            h3 {
+                font-size: 1.25em;
+                letter-spacing: 2px;
+            }
             @media screen and (max-width: 768px){
                 padding: 0px 0px 0px 6vw;
             }
@@ -114,7 +117,7 @@
                 border-radius: 0;
                 border-width: 2px;
                 border-style: solid;
-                border-color: var(--tainacan-item-background-color, white);
+                border-color: #211e17;
                 box-shadow: var(--boxShadow, 6px 6px black);
                 overflow: hidden;
                 transition: box-shadow ease 0.3s, border-color ease 0.3s;
@@ -129,7 +132,12 @@
                 }
                 .metadata-value,
                 .metadata-label {
-                    font-size: 0.8125em !important;
+                    font-size: 0.85em !important;
+                    font-family: 'montserrat','HelveticaNeue','Helvetica Neue','Helvetica-Neue',Helvetica,Arial,sans-serif !important;
+                }
+                
+                .metadata-value {
+                    margin-top: 0.125rem;
                 }
             }
             .tainacan-records-container .tainacan-record,

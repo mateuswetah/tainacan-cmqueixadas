@@ -27,7 +27,7 @@
 		
                         <div class='entry-content-wrapper clearfix {$post_format}-content'>
                             <header class="entry-content-header">
-                                <?php echo "<h1 class='post-title entry-title'>" . $title . "</h1>"; ?>
+                                <?php echo "<h1 class='tainacan-item-title post-title entry-title'>" . $title . "</h1>"; ?>
                             </header>
                             <div class="entry-content" <?php avia_markup_helper( array( 'context' => 'entry_content') ) ?> >
                                 <div class="tainacan-item-single tainacan-item-single--layout-type-dam">
@@ -45,6 +45,7 @@
                     
                     </article>
                 </main>
+                <?php tainacan_cmqueixadas_item_navigation(); ?>
             </div>
         </div>
 
