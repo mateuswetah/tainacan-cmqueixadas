@@ -49,8 +49,8 @@ if ( !function_exists('tainacan_cmqueixadas_get_adjacent_item_links') ) {
 			$next_thumb = get_the_post_thumbnail_url( get_next_post(), 'tainacan-medium' );
 		}
 
-		$previous_post_image_output = $previous_thumb ? $previous_thumb : '';
-		$next_post_image_output = $next_thumb ? $next_thumb : '';
+		$previous_post_image_output = isset($previous_thumb) ? $previous_thumb : '';
+		$next_post_image_output = isset($next_thumb) ? $next_thumb : '';
 
 		// Creates the links
 		$previous = $previous_link_url === false ? '' : (

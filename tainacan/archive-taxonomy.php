@@ -29,25 +29,27 @@ $src = wp_get_attachment_image_src($image, 'full');
                                                 class="avia_textblock av_inherit_color"
                                                 style="font-size:25px;color:#ffffff;"
                                                 itemprop="text">
-                                            <h2 style="text-align:right;">
+                                                <h2 style="text-align: <?php echo (!empty($current_term->get_description()) ? 'right' : 'left') ?>;">
                                                 <?php echo $current_term->get_name(); ?>
                                             </h2>
                                         </div>
                                     </section>
                                 </div>
                                 <div class="av-flex-placeholder"></div>
-                                <div
-                                        class="flex_column av_one_half av-animated-generic right-to-left flex_column_table_cell av-equal-height-column av-align-top avia-builder-el-3 el_after_av_one_half el_before_av_hr avia_start_animation avia_start_delayed_animation"
-                                        style="background: #080707; padding:20px; background-color:#080707; border-radius:0px;">
-                                    <section class="av_textblock_section">
-                                        <div
-                                                class="avia_textblock av_inherit_color"
-                                                style="font-size:20px;color:#ffffff;"
-                                                itemprop="text">
-                                            <p><?php echo $current_term->get_description(); ?></p>
-                                        </div>
-                                    </section>
-                                </div>
+                                <?php if ( !empty($current_term->get_description()) ): ?>
+                                    <div
+                                            class="flex_column av_one_half av-animated-generic right-to-left flex_column_table_cell av-equal-height-column av-align-top avia-builder-el-3 el_after_av_one_half el_before_av_hr avia_start_animation avia_start_delayed_animation"
+                                            style="background: #080707; padding:20px; background-color:#080707; border-radius:0px;">
+                                        <section class="av_textblock_section">
+                                            <div
+                                                    class="avia_textblock av_inherit_color"
+                                                    style="font-size:20px;color:#ffffff;"
+                                                    itemprop="text">
+                                                <p><?php echo $current_term->get_description(); ?></p>
+                                            </div>
+                                        </section>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
