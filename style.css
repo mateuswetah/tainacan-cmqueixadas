@@ -20,6 +20,7 @@
   --tainacan-item-heading-hover-background-color: white;
   --tainacan-filter-menu-width-theme: 20vw;
   --tainacan-success: #333;
+  --tainacan-background-color: #e6e5e5;
   /* Search control */
   /* Filters panel */
   /* Items list container */
@@ -29,7 +30,6 @@
 
 .theme-items-list:not(.is-fullscreen) {
   justify-content: center;
-  background: transparent !important;
   padding: 0;
 }
 
@@ -67,6 +67,7 @@
 }
 
 .theme-items-list #filters-modal {
+  --tainacan-background-color: white;
   width: 100%;
   box-shadow: var(--boxShadow, 6px 6px black);
 }
@@ -87,7 +88,7 @@
 }
 
 .theme-items-list #filters-modal .modal-content #filters-items-list {
-  background-color: var(--backgroundColor, #f2f2f2);
+  background-color: white;
   border: 1px solid #cbcbcb;
   padding: 20px;
   margin: 0px;
@@ -95,6 +96,18 @@
 
 .theme-items-list #filters-modal .modal-content #filters-items-list .filters-components-list {
   margin-bottom: 24px;
+}
+
+.theme-items-list #filters-modal .modal-content #filters-items-list .datepicker .datepicker-header .pagination {
+  padding: 0px;
+}
+
+.theme-items-list #filters-modal .modal-content #filters-items-list .datepicker .datepicker-header .pagination .pagination-previous,
+.theme-items-list #filters-modal .modal-content #filters-items-list .datepicker .datepicker-header .pagination .pagination-next {
+  min-height: 14px !important;
+  width: auto !important;
+  height: auto !important;
+  box-shadow: none !important;
 }
 
 .theme-items-list #filters-modal .loading-background {
@@ -223,15 +236,6 @@
   border-top: none;
   margin-left: 12px;
   margin-right: 12px;
-  --tainacan-background-color: #000;
-  --tainacan-input-color: white;
-  --tainacan-input-background-color: #111;
-  --tainacan-input-border-color: #222;
-  --tainacan-label-color: #eee;
-  --tainacan-info-color: #ddd;
-  --tainacan-heading-color: white;
-  --tainacan-black: white;
-  --tainacan-white: black;
 }
 
 .theme-items-list #items-list-area #items-list-results .pagination-area .pagination {
@@ -261,7 +265,6 @@
 
 .theme-items-list #items-list-area #items-list-results .pagination-area .select select {
   background: none !important;
-  color: white;
 }
 
 .theme-items-list .advanced-search-criteria-title hr {
@@ -402,7 +405,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .button {
 /* Single Item Page */
 .tainacan-item-title {
   text-align: left !important;
-  font-size: 2.35rem !important;
+  font-size: 2.875rem !important;
   letter-spacing: 2px;
   margin-left: 0 !important;
   font-weight: normal;
@@ -422,7 +425,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .button {
   max-width: var(--block-max-width);
   align-self: flex-start;
   align-self: start;
-  margin-bottom: 2.25rem;
+  margin-bottom: 1.25rem;
 }
 
 .tainacan-item-single .tainacan-item-section--document,
@@ -690,7 +693,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .button {
   border-radius: 24px;
   width: 36px;
   height: 36px;
-  bottom: -18px;
+  bottom: 18px;
   right: calc(50% - 18px);
   cursor: pointer;
   font-size: 0;

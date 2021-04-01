@@ -1,7 +1,7 @@
 <section class="tainacan-item-section tainacan-item-section--metadata">
-    <h2 class="tainacan-single-item-section" id="tainacan-item-metadata-label">
-        <?php echo __( 'Informações', 'tainacan-cmqueixadas' ); ?>
-    </h2>
+    <!-- <h2 class="tainacan-single-item-section" id="tainacan-item-metadata-label">
+        <!-- <?php echo __( 'Informações', 'tainacan-cmqueixadas' ); ?> -->
+    <!-- </h2> -->
     <div class="tainacan-item-section__metadata">
         <?php if ( has_post_thumbnail() ): ?>
             <div class="tainacan-item-section__metadata-thumbnail">

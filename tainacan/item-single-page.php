@@ -68,22 +68,22 @@
 
 			<div class='container template-blog template-single-blog '>
 
-				<main
-                        style="padding-top: 12px;"        
-                        class='content units <?php avia_layout_class( 'content' ); ?> <?php echo avia_blog_class_string(); ?>' <?php avia_markup_helper(array('context' => 'content','post_type'=>'post'));?>>
+				<main class='content units <?php avia_layout_class( 'content' ); ?> <?php echo avia_blog_class_string(); ?>' <?php avia_markup_helper(array('context' => 'content','post_type'=>'post'));?>>
 
                     <article class=" <?php echo implode( ' ', get_post_class( 'post-entry')) ?>" <?php avia_markup_helper( array( 'context' => 'entry' ) ) ?> >
 
                         <div class='entry-content-wrapper clearfix {$post_format}-content'>
-                            <header class="entry-content-header">
-                                <?php echo "<h1 class='tainacan-item-title post-title entry-title'>" . $title . "</h1>"; ?>
-                            </header>
                             <div class="entry-content" <?php avia_markup_helper( array( 'context' => 'entry_content') ) ?> >
                                 <div class="tainacan-item-single tainacan-item-single--layout-type-dam">
                                 <?php
                                     include(TAINACAN_CMQUEIXADAS_PLUGIN_DIR_PATH . 'template-parts/tainacan-item-single-attachments.php' );
                                     do_action( 'tainacan-cmqueixadas-single-item-after-attachments' );
-                                    
+
+                                ?>
+                                    <header class="entry-content-header">
+                                        <?php echo "<h1 class='tainacan-item-title post-title entry-title'>" . $title . "</h1>"; ?>
+                                    </header>
+                                <?php
                                     include(TAINACAN_CMQUEIXADAS_PLUGIN_DIR_PATH . 'template-parts/tainacan-item-single-metadata.php' );
                                     do_action( 'tainacan-cmqueixadas-single-item-after-metadata' );
                                 ?>

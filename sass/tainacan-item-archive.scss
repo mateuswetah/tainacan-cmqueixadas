@@ -8,10 +8,10 @@
     --tainacan-item-heading-hover-background-color: white;
     --tainacan-filter-menu-width-theme: 20vw;
     --tainacan-success: #333;
+    --tainacan-background-color: #e6e5e5;
     
     &:not(.is-fullscreen) {
         justify-content: center;
-        background: transparent !important;
         padding: 0;
     }
 
@@ -52,6 +52,7 @@
 
     /* Filters panel */
     #filters-modal {
+        --tainacan-background-color: white;
         width: 100%;
         box-shadow: var(--boxShadow, 6px 6px black);
 
@@ -67,13 +68,24 @@
             }
 
             #filters-items-list {
-                background-color: var(--backgroundColor, #f2f2f2);
+                background-color: white;
                 border: 1px solid #cbcbcb;
                 padding: 20px;
                 margin: 0px;
 
                 .filters-components-list {
                     margin-bottom: 24px;
+                }
+                .datepicker .datepicker-header .pagination {
+                    padding: 0px;
+
+                    .pagination-previous,
+                    .pagination-next {
+                        min-height: 14px !important;
+                        width: auto !important;
+                        height: auto !important;
+                        box-shadow: none !important;
+                    }
                 }
             }
         }
@@ -183,16 +195,6 @@
                 margin-left: 12px;
                 margin-right: 12px;
 
-                --tainacan-background-color: #000;
-                --tainacan-input-color: white;
-                --tainacan-input-background-color: #111;
-                --tainacan-input-border-color: #222;
-                --tainacan-label-color: #eee;
-                --tainacan-info-color: #ddd;
-                --tainacan-heading-color: white;
-                --tainacan-black: white;
-                --tainacan-white: black;
-
                 .pagination {
                     padding: 3px;
                     line-height: 35px;
@@ -219,7 +221,6 @@
 
                 .select select {
                     background: none !important;
-                    color: white;
                 }
             }
         }
