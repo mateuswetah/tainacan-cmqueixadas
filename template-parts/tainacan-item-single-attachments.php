@@ -24,7 +24,7 @@
 
             if ($is_gallery_mode) {
             
-                $class_slide_metadata = '';
+                $class_slide_metadata = 'noLightbox ';
                 if ($hide_file_name_main)
                     $class_slide_metadata .= ' hide-name';
                 if ($hide_file_description_main)
@@ -45,6 +45,7 @@
                             'media_description' => $is_document_type_attachment ? get_the_content(tainacan_get_the_document_raw()) : '',
                             'media_caption' => $is_document_type_attachment ? get_the_excerpt(tainacan_get_the_document_raw()) : '',
                             'media_type' => tainacan_get_the_document_type(),
+                            'class_slide_content' => 'noLightbox',
                             'class_slide_metadata' => $class_slide_metadata
                         ));
                 }
@@ -61,6 +62,7 @@
                             'media_description' => $attachment->post_content,
                             'media_caption' => $attachment->post_excerpt,
                             'media_type' => $attachment->post_mime_type,
+                            'class_slide_content' => 'noLightbox',
                             'class_slide_metadata' => $class_slide_metadata
                         ));
                 }
@@ -80,7 +82,8 @@
                             'media_description' => $is_document_type_attachment ? get_the_content(tainacan_get_the_document_raw()) : '',
                             'media_caption' => $is_document_type_attachment ? get_the_excerpt(tainacan_get_the_document_raw()) : '',
                             'media_type' => tainacan_get_the_document_type(),
-                            'class_slide_metadata' => 'hide-caption hide-description ' . ( $hide_file_name ? 'hide-name' : '' )
+                            'class_slide_content' => 'noLightbox',
+                            'class_slide_metadata' => 'noLightbox hide-caption hide-description ' . ( $hide_file_name ? 'hide-name' : '' )
                         ));
                     
                 }
@@ -93,7 +96,8 @@
                             'media_description' => $attachment->post_content,
                             'media_caption' => $attachment->post_excerpt,
                             'media_type' => $attachment->post_mime_type,
-                            'class_slide_metadata' => 'hide-caption hide-description ' . ( $hide_file_name ? 'hide-name' : '' )
+                            'class_slide_content' => 'noLightbox',
+                            'class_slide_metadata' => 'noLightbox hide-caption hide-description ' . ( $hide_file_name ? 'hide-name' : '' )
                         ));
                 }
             }
@@ -103,7 +107,8 @@
                 $media_items_thumbs,
                 $is_gallery_mode ? $media_items_main : null,
                 array(
-                    'class_thumbs_li' => 'tainacan-item-section__attachments-file',
+                    'class_main_li' => 'noLightbox',
+                    'class_thumbs_li' => 'tainacan-item-section__attachments-file noLightbox',
                     'swiper_thumbs_options' => $is_gallery_mode ? '' : array(
                         'navigation' => array(
                             'nextEl' => '.swiper-navigation-next_' . 'tainacan-item-attachments_id-' . $post->ID . '-thumbs',

@@ -402,9 +402,10 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .button {
 /* Single Item Page */
 .tainacan-item-title {
   text-align: left !important;
-  font-size: 2.25rem !important;
+  font-size: 2.35rem !important;
   letter-spacing: 2px;
   margin-left: 0 !important;
+  font-weight: normal;
 }
 
 .tainacan-item-single {
@@ -478,7 +479,8 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .button {
 
 .tainacan-item-single .tainacan-single-item-section {
   text-align: var(--section-alignment, left);
-  font-size: 1.85rem;
+  font-size: 1.75rem;
+  font-weight: normal;
   letter-spacing: 2px;
   margin-bottom: 1.5rem;
 }
@@ -506,6 +508,11 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .button {
 
 .tainacan-item-single .tainacan-media-component .tainacan-media-component__swiper-main ul.swiper-wrapper[data-pswp-uid] li.swiper-slide img:hover {
   box-shadow: 4px 4px black;
+}
+
+.tainacan-item-single .tainacan-media-component .tainacan-media-component__swiper-main ul.swiper-wrapper[data-pswp-uid] li.swiper-slide:hover .tainacan-item-file-download {
+  opacity: 1.0;
+  transform: scale(1);
 }
 
 .tainacan-item-single .tainacan-media-component .tainacan-media-component__swiper-thumbs {
@@ -600,7 +607,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .button {
 .tainacan-item-single .tainacan-item-section__metadata .tainacan-metadata-label {
   text-align: var(--metadata-label-alignment, left);
   font-family: 'montserrat','HelveticaNeue','Helvetica Neue','Helvetica-Neue',Helvetica,Arial,sans-serif !important;
-  font-size: 1.125rem;
+  font-size: 1.0rem;
   margin-top: 0.5rem;
 }
 
@@ -698,7 +705,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .button {
   display: block;
   position: relative;
   z-index: 99;
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 .tainacan-item-single .tainacan-item-file-download::after {
