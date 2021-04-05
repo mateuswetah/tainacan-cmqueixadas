@@ -15,7 +15,7 @@ if (! defined('WP_DEBUG') ) {
 }
 
 /** Plugin version */
-const TAINACAN_CMQUEIXADAS_VERSION = '0.1.0';
+const TAINACAN_CMQUEIXADAS_VERSION = '0.1.1';
 
 $plugin_root_url = plugin_dir_url(__FILE__);
 define('TAINACAN_CMQUEIXADAS_PLUGIN_URL_PATH', $plugin_root_url);

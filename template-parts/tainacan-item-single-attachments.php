@@ -43,7 +43,7 @@
                             'media_content_full' => $is_document_type_attachment ? tainacan_get_the_document(0, 'full') : ('<div class="attachment-without-image">' . tainacan_get_the_document(0, 'full') . '</div>'),
                             'media_title' => $is_document_type_attachment ? get_the_title(tainacan_get_the_document_raw()) : '',
                             'media_description' => $is_document_type_attachment ? get_the_content(tainacan_get_the_document_raw()) : '',
-                            'media_caption' => $is_document_type_attachment ? get_the_excerpt(tainacan_get_the_document_raw()) : '',
+                            'media_caption' => $is_document_type_attachment ? wp_get_attachment_caption( tainacan_get_the_document_raw() ) : '',
                             'media_type' => tainacan_get_the_document_type(),
                             'class_slide_content' => 'noLightbox',
                             'class_slide_metadata' => $class_slide_metadata

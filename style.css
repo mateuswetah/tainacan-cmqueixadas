@@ -699,6 +699,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .button {
   font-size: 0;
   background-color: #b6181e;
   color: white;
+  z-index: 999;
   transition: opacity 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
 }
 
