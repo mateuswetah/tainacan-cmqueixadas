@@ -126,3 +126,11 @@
     ?>
         </section>
 <?php } ?>
+
+<?php if ( !function_exists('tainacan_the_media_component') ) {
+
+    ?> <section class="tainacan-item-section tainacan-item-section--<?php echo ((!$is_gallery_mode ? 'attachments' : 'gallery')) ?>"> <?php
+        tainacan_the_document();
+    ?> </section> <?php
+
+} ?>
