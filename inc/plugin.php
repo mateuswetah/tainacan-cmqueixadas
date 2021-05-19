@@ -13,12 +13,12 @@ if ( !function_exists('tainacan_cmqueixadas_archive_templates_redirects') ) {
             $collections_post_types = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
             $current_post_type = get_post_type();
 
-            if (in_array($current_post_type, $collections_post_types)) {
-                
-                if (is_post_type_archive()) { 			
-                    include( TAINACAN_CMQUEIXADAS_PLUGIN_DIR_PATH . 'tainacan/archive-items.php' );
-                    exit;
-                } 
+            if (in_array($current_post_type, $collections_post_types)) {			
+                include( TAINACAN_CMQUEIXADAS_PLUGIN_DIR_PATH . 'tainacan/archive-items.php' );
+                exit; 
+            } else if ($current_post_type === 'tainacan-collection') {
+                include( TAINACAN_CMQUEIXADAS_PLUGIN_DIR_PATH . 'tainacan/archive-collections.php' );
+                exit;
             }
         } else if ( is_tax() ) {
             $term = get_queried_object();

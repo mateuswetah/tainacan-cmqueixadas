@@ -44,6 +44,21 @@
             .control.has-icons-right .icon .mdi-magnify::before {
                 color: white;
             }
+            a.has-text-secondary.is-pulled-right {
+                color: white !important;
+                margin-top: -4px !important;
+                font-size: 0.875em !important;
+            }
+        }
+        .button {
+            border-radius: 0px !important;
+        }
+    }
+
+    /* Advanced Search Control */
+    #advanced-search-container {
+        select {
+            background-image: none !important;
         }
         .button {
             border-radius: 0px !important;

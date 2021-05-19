@@ -10,6 +10,56 @@
 }
 
 /* Remaining imports */
+.avia-section.tainacan-collection-archive__header {
+  float: none;
+  background-position: top center !important;
+  background-size: contain !important;
+}
+
+.tainacan-collection-archive {
+  padding: 1rem;
+}
+
+.tainacan-collection-archive .tainacan-collection-archive__collection {
+  border-radius: 0;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #211e17;
+  box-shadow: var(--boxShadow, 6px 6px black);
+  overflow: hidden;
+  background-color: var(--tainacan-item-background-color, white);
+  transition: box-shadow ease 0.3s, border-color ease 0.3s;
+  margin: 0.125rem auto 2rem auto;
+  max-width: 1024px;
+  padding: 1rem;
+}
+
+.tainacan-collection-archive .tainacan-collection-archive__collection:hover {
+  box-shadow: -5px 5px black;
+  border-color: black;
+}
+
+.tainacan-collection-archive .tainacan-collection-archive__collection .tainacan-collection-archive__collection-img {
+  max-width: 240px;
+  margin-left: 12px;
+  float: right;
+}
+
+.tainacan-collection-archive .tainacan-collection-archive__collection .post-title {
+  font-size: 2rem !important;
+  color: black;
+}
+
+.tainacan-collection-archive .tainacan-collection-archive__collection .entry-content p {
+  color: #211e17;
+}
+
+.tainacan-collection-archive .pagination {
+  background: white;
+  padding: 1rem 1rem;
+  margin: 0 -1rem -1rem -1rem;
+}
+
 /* Tainacan Items list customization */
 .theme-items-list {
   --tainacan-secondary: #b6181e;
@@ -22,6 +72,7 @@
   --tainacan-success: #333;
   --tainacan-background-color: #e6e5e5;
   /* Search control */
+  /* Advanced Search Control */
   /* Filters panel */
   /* Items list container */
   /* Advanced Search */
@@ -62,7 +113,21 @@
   color: white;
 }
 
+.theme-items-list .search-control .search-area a.has-text-secondary.is-pulled-right {
+  color: white !important;
+  margin-top: -4px !important;
+  font-size: 0.875em !important;
+}
+
 .theme-items-list .search-control .button {
+  border-radius: 0px !important;
+}
+
+.theme-items-list #advanced-search-container select {
+  background-image: none !important;
+}
+
+.theme-items-list #advanced-search-container .button {
   border-radius: 0px !important;
 }
 

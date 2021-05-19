@@ -91,6 +91,13 @@
                             </div>
 
                         </div>
+                        <br>
+                        <footer class="entry-footer">
+                            <?php 
+                                //share links on single post
+                                avia_social_share_links();
+                            ?>
+                        </footer>
                     
                     </article>
                 </main>
