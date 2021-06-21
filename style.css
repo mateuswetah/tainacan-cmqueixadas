@@ -385,6 +385,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content {
   --tainacan-item-hover-background-color: white;
   --tainacan-item-heading-hover-background-color: white;
   --tainacan-success: #333;
+  --tainacan-media-main-carousel-height: 30vh;
 }
 
 body:not(.tainacan-admin-page) .tainacan-modal-content {
