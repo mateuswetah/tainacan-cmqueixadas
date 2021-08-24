@@ -4,7 +4,7 @@ Plugin Name: Tainacan CMQueixadas
 Plugin URI: https://tainacan.org/
 Description: Suporte do Tainacan para o tema usado pelo CMQueixadas - IMPORTANTE - Não desativar
 Author: wetah
-Version: 0.1.0
+Version: 0.1.2
 Text Domain: tainacan-cmqueixadas
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -15,7 +15,7 @@ if (! defined('WP_DEBUG') ) {
 }
 
 /** Plugin version */
-const TAINACAN_CMQUEIXADAS_VERSION = '0.1.1';
+const TAINACAN_CMQUEIXADAS_VERSION = '0.1.2';
 
 $plugin_root_url = plugin_dir_url(__FILE__);
 define('TAINACAN_CMQUEIXADAS_PLUGIN_URL_PATH', $plugin_root_url);

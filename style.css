@@ -471,7 +471,7 @@ body:not(.tainacan-admin-page) .tainacan-modal-content .button {
 /* Single Item Page */
 .tainacan-item-title {
   text-align: left !important;
-  font-size: 2.875rem !important;
+  font-size: 2.35rem !important;
   letter-spacing: 2px;
   margin-left: 0 !important;
   font-weight: normal;
