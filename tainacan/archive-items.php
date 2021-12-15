@@ -1,30 +1,72 @@
 <?php get_header(); ?>
+    <article>
+        <header
+                id="av_section_tainacan-collection-items"
+                class="avia-section main_color avia-section-default avia-no-border-styling  avia-bg-style-scroll  avia-builder-el-0  el_before_av_section avia-builder-el-first container_wrap fullsize"
+                style="background-color: #b6181d; background-size: cover; background-repeat: no-repeat; background-image: url(<?php echo header_image(); ?>);background-attachment: scroll; background-position: top left;"
+                data-section-bg-repeat="no-repeat">
+            <div class="container">
+                <div class="template-page content av-contet-full alpha units">
+                    <div class="post-entry post-entry-type-page">
+                        <div class="entry-content-wrapper clearfix">
+                            <div class="flex_column_table av-equal-height-column-flextable-flextable">
+                                <div 
+                                        class="flex_column av_one_half av-animated-generic left-to-right flex_column_table_cell av-equal-height-column av-align-top av-zero-column-padding first avia-builder-el-1 el_before_av_one_half avia-builder-el-first avia_start_animation avia_start_delayed_animation"
+                                        style="border-radius:0px;">
+                                    <section class="av_textblock_section">
+                                        <div 
+                                                class="avia_textblock av_inherit_color"
+                                                style="font-size:25px;color:#ffffff;"
+                                                itemprop="text">
+                                            <h2 style="text-align: <?php echo (!empty(tainacan_get_the_collection_description()) ? 'right' : 'left') ?>;">
+                                                <?php echo tainacan_the_collection_name(); ?>
+                                            </h2>
+                                        </div>
+                                    </section>
+                                </div>
+                                <div class="av-flex-placeholder"></div>
+                                <?php if ( !empty(tainacan_get_the_collection_description()) ): ?>
+                                    <div
+                                            class="flex_column av_one_half av-animated-generic right-to-left flex_column_table_cell av-equal-height-column av-align-top avia-builder-el-3 el_after_av_one_half el_before_av_hr avia_start_animation avia_start_delayed_animation"
+                                            style="background: #080707; padding:20px; background-color:#080707; border-radius:0px;">
+                                        <section class="av_textblock_section">
+                                            <div
+                                                    class="avia_textblock av_inherit_color"
+                                                    style="font-size:20px;color:#ffffff;"
+                                                    itemprop="text">
+                                                <p><?php echo tainacan_the_collection_description(); ?></p>
+                                            </div>
+                                        </section>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-<div class="bt_bb_wrapper">
-	<div class="bt_bb_fe_wrap">
-		<div class="bt_bb_section">
-			<div class="bt_bb_port">
-			<?php 
-				tainacan_the_faceted_search([
-					'default_view_mode' => 'masonry',
-					'default_items_per_page' => 12,
-					'hide_filters' => false,
-					'hide_hide_filters_button' => false,
-					'hide_search' => false,
-					'hide_advanced_search' => false,
-					'hide_sort_by_button' => false,
-					'hide_exposers_button' => false,
-					'hide_items_per_page_button' => false,
-					'hide_go_to_page_button' => false,
-					'show_filters_button_inside_search_control' => false,
-					'start_with_filters_hidden' => false,
-					'filters_as_modal' => false,
-					'show_inline_view_mode_options' => false,
-					'show_fullscreen_with_view_modes' => false
-				]); 
-			?>
-			</div>
-		</div>
-	</div>
-</div>
+        <main class="entry-content">
+            <?php 
+                tainacan_the_faceted_search([
+                    'is_forced_view_mode' => false,
+                    'default_view_mode' => 'cards',
+                    'hide_filters' => false,
+                    'start_with_filters_hidden' => true,
+                    'hide_hide_filters_button' => false,
+                    'show_filters_button_inside_search_control' => true,
+                    'filters_as_modal' => false,
+                    'hide_search' => false,
+                    'hide_advanced_search' => false,
+                    'hide_sorting_area' => false,
+                    'hide_sort_by_button' => false,
+                    'hide_displayed_metadata_dropdown' => false,
+                    'show_inline_view_mode_options' => false,
+                    'show_fullscreen_with_view_modes' => false,
+                    'hide_exposers_button' => true,
+                    'hide_pagination_area' => false,
+                ]); 
+            ?>
+        </main>
+    </article>
 <?php get_footer(); ?>

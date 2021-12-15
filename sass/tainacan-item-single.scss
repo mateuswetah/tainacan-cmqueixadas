@@ -1,42 +1,325 @@
-// Single Items page
-h2.tainacan-single-item-section {
-    font-size: 1.25em;
-    margin-bottom: 0.5em;
-}
-h3.tainacan-metadata-label {
-    font-size: 1.125em;
-}
-.tainacan-relationship-metadatum-header h4.label {
-    font-size: 1em;
-}
-.tainacan-metadatum h5.label {
-    font-size: 0.875em;
-    margin-top: 0.25em;
-}
-.tainacan-metadata-value {
-    margin-bottom: 1.5em;
-}
 
-.hierarchy-separator,
-.multivalue-separator {
-    opacity: 0.6;
+/* Single Item Page */
+.tainacan-item-title {
+    text-align: left !important;
+    font-size: 2.35rem !important;
+    letter-spacing: 2px;
+    margin-left: 0 !important;
+    font-weight: normal;
 }
+.tainacan-item-single {
+    
+    // Overall page layout structure -------------------
+    @include display-grid;
+    align-items: start;
+    grid-column-gap: 48px;
+    column-gap: 48px;
 
-.tainacan-item-section__metadata {
-    column-width: 480px;
-
-    & p:empty {
-        display: none;
-        margin: none;
+    .tainacan-item-section {
+        max-width: var(--block-max-width);
+        align-self: flex-start;
+        align-self: start;
+        margin-bottom: 1.25rem;
     }
-}
+    .tainacan-item-section--document,
+    .tainacan-item-section--gallery { grid-area: document }
+    .tainacan-item-section--attachments { grid-area: attachments }
+    .tainacan-item-section--metadata { grid-area: metadata }
+    
+    &.tainacan-item-single--layout-type-dam {
+        grid-template-areas:
+            'document'
+            'attachments'
+            'metadata';
+        grid-template-columns: 100%;
+    }
+    &.tainacan-item-single--layout-type-dma {
+        grid-template-areas:
+            'document'
+            'metadata'
+            'attachments';
+        grid-template-columns: 100%;
+    }
+    &.tainacan-item-single--layout-type-mda {
+        grid-template-areas:
+            'metadata'
+            'document'
+            'attachments';
+        grid-template-columns: 100%;
+    }
+    &.tainacan-item-single--layout-type-mg {
+        grid-template-areas:
+            'metadata document' 
+            'metadata attachments'
+            'metadata .';
+        grid-template-columns: 60% 40%;
 
-// Tainacan Media Component (attachments gallery)
-.tainacan-media-component {
-    --swiper-theme-color: #3d61bf;
-    --swiper-navigation-color: #3d61bf;
-}
+        @media only screen and (max-width: 960px) {
+            grid-template-areas:
+            'metadata'
+            'document'
+            'attachments';
+            grid-template-columns: 100% !important;
+        }
+    }
+    &.tainacan-item-single--layout-type-gm {
+        grid-template-areas:
+            'document metadata' 
+            'attachments metadata'
+            '. metadata';
+        grid-template-columns: 60% 40%;
 
-.tainacan-items-single-page .btSiteFooter {
-    display: none;
+        @media only screen and (max-width: 960px) {
+            grid-template-areas:
+            'document'
+            'attachments'
+            'metadata';
+            grid-template-columns: 100% !important;
+        }
+    }
+
+    // Headings and spacing ----------------------------
+    .tainacan-single-item-section {
+        text-align: var(--section-alignment, left);
+        font-size: 1.75rem;
+        font-weight: normal;
+        letter-spacing: 2px;
+        margin-bottom: 1.5rem;
+    }
+
+
+    // Tainacan Media Component (attachments gallery)
+    .tainacan-media-component {
+        --swiper-theme-color: #b6181e;
+        --swiper-navigation-color: #b6181e;
+        --swiper-navigation-size: 2.5rem;
+        --tainacan-media-background: var(--background-color, #ffffff);
+        --tainacan-media-main-carousel-height: 60vh;
+        --tainacan-media-main-carousel-width: 100%;
+        --tainacan-media-thumbs-carousel-width: 100%;
+        --tainacan-media-thumbs-carousel-item-size: var(--attachments-size,140px);
+
+        .tainacan-media-component__swiper-main {
+
+            ul.swiper-wrapper[data-pswp-uid] li.swiper-slide {
+                margin-left: 0;
+                margin-right: 0;
+
+                img {
+                    box-shadow: 2px 2px black;
+                    transition: box-shadow ease 0.2s;
+
+                    &:hover {
+                        box-shadow: 4px 4px black;
+                    }
+                }
+
+                &:hover {
+                    .tainacan-item-file-download {
+                        opacity: 1.0;
+                        transform: scale(1.0);
+                    }
+                }
+            }
+        }
+        .tainacan-media-component__swiper-thumbs {
+            font-weight: normal;
+            transition: font-weight 0.3s ease;
+    
+            img {
+                margin-bottom: 4px;
+                transition: border 0.3s ease;
+                border-radius: var(--borderRadius, 0px) !important;
+                border-color: black;
+                border-bottom: 4px solid black;
+                box-shadow: 4px 2px black;
+            }
+
+            .swiper-slide-metadata {
+                display: block;
+                margin-top: 0.5rem;
+            }
+        }
+    }
+   
+    // Metadata list -------------------------------------
+    .tainacan-item-section__metadata {
+        height: 100%;
+        -moz-column-width: var(--metadata-column-width, 320px);
+        -webkit-column-width: var(--metadata-column-width, 320px);
+        column-width: var(--metadata-column-width, 320px);
+        
+        div {
+            -webkit-column-break-inside: avoid;
+            page-break-inside: avoid;
+            break-inside: avoid;
+            display: inline-block;
+            width: 100%;
+            &:last-child {
+                -webkit-column-break-inside: auto;
+                page-break-inside: auto;
+                break-inside: auto;
+                display: inline-block;
+                width: 100%;
+            }
+        }
+        @media only screen and (min-width: 768px) {
+            -moz-column-gap: 0;
+            -moz-column-rule: none;
+            -webkit-column-gap: 0;
+            -webkit-column-rule: none;
+            column-gap: 4rem;
+            column-rule: none;
+        }
+        @media only screen and (min-width: 1366px) {
+            -moz-column-gap: 7rem;
+            -moz-column-rule: none;
+            -webkit-column-gap: 7rem;
+            -webkit-column-rule: none;
+            column-gap: 7rem;
+            column-rule: none;
+        }
+        h3 {
+            padding-right: 1rem;
+            margin-bottom: 0.25rem;
+            width: 100%;
+            &:first-of-type:last-of-type {
+                display: inline-block;
+            }
+        }
+        h4,
+        label {
+            padding-right: 0.875rem;
+            width: 100%;
+            &:first-of-type:last-of-type {
+                display: inline-block;
+            }
+        }
+        p {
+            word-wrap: break-word;
+        }
+        .tainacan-metadata-label {
+            text-align: var(--metadata-label-alignment, left);
+            font-family: 'montserrat','HelveticaNeue','Helvetica Neue','Helvetica-Neue',Helvetica,Arial,sans-serif !important;
+            font-size: 1.0rem;
+            margin-top: 0.5rem;
+        }
+        .tainacan-metadata-value {
+            text-align: var(--metadata-value-alignment, left);
+            font-family: var(--fontFamily);
+            font-size: var(--fontSize);
+            margin-top: 0;
+            margin-bottom: 0.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: var(--metadata-value-border, 0px solid rgba(125, 125, 125, 0.5));
+        }
+        .tainacan-item-section__metadata-thumbnail img {
+            border-radius: var(--borderRadius, 0px) !important;
+            border-color: black;
+            border-bottom: 4px solid black;
+            box-shadow: 4px 2px black;
+        }
+
+        // Metadata type textarea has different separator
+        .multivalue-separator {
+            color: #cbcbcb;
+            margin: 0 8px;    
+        }
+        .hierarchy-separator {
+            color: #cbcbcb;  
+        }
+        .metadata-type-compound,
+        .metadata-type-textarea {
+            .multivalue-separator {
+                display: block;
+                max-height: 1px;
+                width: 35px;
+                background: #cbcbcb;
+                content: none;
+                color: transparent;
+                margin: 0.875rem auto;
+            }
+        }
+        .tainacan-compound-group {
+            padding-left: 1.5rem;
+            border-left: 1px solid #e0e5eb;
+        }
+
+        &.metadata-type-2 {
+            &>div {
+                display: flex;
+                flex-wrap: nowrap;
+                
+                .tainacan-metadata-label {
+                    flex-basis: 40%;
+                    margin-bottom: 0;
+                    border-right: var(--metadata-label-border, 0px solid rgba(125, 125, 125, 0.5));
+                }
+                .tainacan-metadata-value {
+                    flex-basis: 60%;
+                    padding-left: 1rem;
+                }
+
+                @media only screen and (max-width: 767px) {
+                    flex-wrap: wrap;
+                
+                    .tainacan-metadata-label {
+                        flex-basis: 100%;
+                        margin-bottom: 0.25rem;
+                    }
+                    .tainacan-metadata-value {
+                        flex-basis: 100%;
+                        padding-left: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    // Document Download button -------------------------------------
+    .tainacan-item-file-download {
+        position: absolute;
+        opacity: 0;
+        transform: scale(0);
+        border-radius: 24px;
+        width: 36px;
+        height: 36px;
+        bottom: 18px;
+        right: calc(50% - 18px);
+        cursor: pointer;
+        font-size: 0;
+        background-color: #b6181e;
+        color: white;
+        z-index: 999;
+        transition: opacity 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
+
+        a {
+            height: 38px;
+            width: 38px;
+            display: block;
+            position: relative;
+            z-index: 99;
+            background-color: transparent !important;
+        }
+
+        &::after {
+            position: relative;
+            top: -38px;
+            display: inline-block;
+            font: normal normal normal 20px/1 "TainacanIcons";
+            font-size: 1.25rem !important;
+            line-height: 2.25rem;
+            text-rendering: auto;
+            vertical-align: middle;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 1.25em;
+            text-transform: none !important;
+            letter-spacing: normal !important;
+            content: 'download';
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
 }

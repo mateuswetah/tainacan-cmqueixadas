@@ -1,0 +1,48 @@
+.avia-section.tainacan-collection-archive__header {
+    float: none;
+    background-position: top center !important;
+    background-size: contain !important;
+}
+.tainacan-collection-archive {
+    //: #211e17;
+    padding: 1rem;
+
+    .tainacan-collection-archive__collection {
+        border-radius: 0;
+        border-width: 2px;
+        border-style: solid;
+        border-color: #211e17;
+        box-shadow: var(--boxShadow, 6px 6px black);
+        overflow: hidden;
+        background-color: var(--tainacan-item-background-color, white);
+        transition: box-shadow ease 0.3s, border-color ease 0.3s;
+        margin: 0.125rem auto 2rem auto;
+        max-width: 1024px;
+        padding: 1rem;
+
+        &:hover {
+            box-shadow: -5px 5px black;
+            border-color: black;
+        }
+
+        .tainacan-collection-archive__collection-img {
+            max-width: 240px;
+            margin-left: 12px;
+            float: right;
+        }
+
+        .post-title {
+            font-size: 2rem !important;
+            color: black;
+        }
+        .entry-content p {
+            color: #211e17;
+        }
+    }
+
+    .pagination {
+        background: white;
+        padding: 1rem 1rem;
+        margin: 0 -1rem -1rem -1rem;
+    }
+}

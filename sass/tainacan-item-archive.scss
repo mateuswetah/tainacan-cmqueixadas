@@ -1,142 +1,381 @@
-/* Wide alignments to Tainacan lists */
-.tainacan-items-archive-page .btContentHolder {
-    max-width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding: 12px 0 !important;
-}
-.tainacan-items-archive-page .btContentHolder .btContent {
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding: 0 !important;
-}
-.tainacan-items-archive-page .btContentHolder .btSidebar {
-    display: none !important;
-}
-
 /* Tainacan Items list customization */
-.theme-items-list,
-.tainacan-modal {
-    --tainacan-secondary: #3d61bf;
-    --tainacan-primary: #dde6fd;
-    --tainacan-font-family: "Niramit",Arial,Helvetica,sans-serif;
-}
-
-.tainacan-modal .filter-item-forms .collapse input.input,
-.tainacan-modal .filter-item-forms .collapse .input,
-.tainacan-modal .filter-item-forms .collapse textarea.textarea,
-.tainacan-modal .filter-item-forms .collapse .textarea,
-.tainacan-modal .filter-item-forms .collapse input[type="color"].input,
-.tainacan-modal .filter-item-forms .collapse input[type="date"].input,
-.tainacan-modal .filter-item-forms .collapse input[type="datetime-local"].input,
-.tainacan-modal .filter-item-forms .collapse input[type="datetime"].input,
-.tainacan-modal .filter-item-forms .collapse input[type="email"].input,
-.tainacan-modal .filter-item-forms .collapse input[type="number"].input,
-.tainacan-modal .filter-item-forms .collapse input[type="month"].input,
-.tainacan-modal .filter-item-forms .collapse input[type="password"].input,
-.tainacan-modal .filter-item-forms .collapse input[type="search"].input,
-.tainacan-modal .filter-item-forms .collapse input[type="tel"].input,
-.tainacan-modal .filter-item-forms .collapse input[type="text"].input,
-.tainacan-modal .filter-item-forms .collapse input[type="time"].input,
-.tainacan-modal .filter-item-forms .collapse input[type="url"].input,
-.tainacan-modal .filter-item-forms .collapse input[type="week"].input,
-.tainacan-modal .filter-item-forms .collapse .select,
-.tainacan-modal .filter-item-forms .collapse select,
-.tainacan-modal .filter-item-forms .collapse .dropdown-trigger>.button,
-.theme-items-list .search-control .search-control-item input.input,
-.theme-items-list .search-control .search-control-item .input,
-.theme-items-list .search-control .search-control-item textarea.textarea,
-.theme-items-list .search-control .search-control-item .textarea,
-.theme-items-list .search-control .search-control-item input[type="color"].input,
-.theme-items-list .search-control .search-control-item input[type="date"].input,
-.theme-items-list .search-control .search-control-item input[type="datetime-local"].input,
-.theme-items-list .search-control .search-control-item input[type="datetime"].input,
-.theme-items-list .search-control .search-control-item input[type="email"].input,
-.theme-items-list .search-control .search-control-item input[type="number"].input,
-.theme-items-list .search-control .search-control-item input[type="month"].input,
-.theme-items-list .search-control .search-control-item input[type="password"].input,
-.theme-items-list .search-control .search-control-item input[type="search"].input,
-.theme-items-list .search-control .search-control-item input[type="tel"].input,
-.theme-items-list .search-control .search-control-item input[type="text"].input,
-.theme-items-list .search-control .search-control-item input[type="time"].input,
-.theme-items-list .search-control .search-control-item input[type="url"].input,
-.theme-items-list .search-control .search-control-item input[type="week"].input,
-.theme-items-list .search-control .search-control-item .select,
-.theme-items-list .search-control .search-control-item select,
-.theme-items-list .search-control .search-control-item .dropdown-trigger>.button {
-    border-radius: 36px !important;
-    line-height: 1.5 !important;
-}
-
-.tainacan-modal .dropdown-menu,
-.theme-items-list .dropdown-menu {
-    box-shadow: 0 0 30px 0 rgba(0,0,0,.12) !important;
-    border-radius: 2px !important;
-
-    &::before {
-        content: "";
-        display: block;
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-bottom: 9px solid #fff;
-        z-index: 3;
-        position: absolute;
-        left: 50%;
-        top: 75%;
-        margin-left: -33px;
-        margin-top: -9px;
-        opacity: 0;
-        -webkit-transition: 200ms ease all;
-        -moz-transition: 200ms ease all;
-        transition: 200ms ease all;
-        pointer-events: none;
-        -webkit-transform: translateY(10px);
-        -moz-transform: translateY(10px);
-        -ms-transform: translateY(10px);
-        transform: translateY(10px);
-        -webkit-transition-delay: 0;
-        -moz-transition-delay: 0;
-        transition-delay: 0;
+.theme-items-list {
+    --tainacan-secondary: #b6181e;
+    --tainacan-primary: #e0cacb;
+    --boxShadow: 6px 6px black;
+    --tainacan-item-background-color: white;
+    --tainacan-item-hover-background-color: white;
+    --tainacan-item-heading-hover-background-color: white;
+    --tainacan-filter-menu-width-theme: 20vw;
+    --tainacan-success: #333;
+    --tainacan-background-color: #e6e5e5;
+    
+    &:not(.is-fullscreen) {
+        justify-content: center;
+        padding: 0;
     }
 
-    .dropdown-content {
-        border: none !important;
+    /* Search control */
+    .search-control {
+        --tainacan-background-color: #080707;
+        --tainacan-input-color: white;
+        --tainacan-input-background-color: #111;
+        --tainacan-input-border-color: #222;
+        --tainacan-label-color: #eee;
+        --tainacan-info-color: #ddd;
+        --tainacan-heading-color: white;
+        --tainacan-primary: #b6181e;
+        
+        //background-image: url('https://cmqueixadas.com.br/wp-content/uploads/2020/09/menulateral.png');
+        background-repeat: repeat;
+        background-color: var(--tainacan-background-color, #000);
+        padding: 26px 20px 2px 20px !important;
+        margin: 0px;
+
+        .search-control-item {
+            margin-bottom: 20px !important;
+        }
+        .search-area {
+            input {
+                background-color: var(--tainacan-secondary) !important;
+                border: var(--tainacan-input-border-color) !important;
+                color: var(--tainacan-input-color) !important;
+            }
+            .control.has-icons-right .icon .mdi-magnify::before {
+                color: white;
+            }
+            a.has-text-secondary.is-pulled-right {
+                color: white !important;
+                margin-top: -4px !important;
+                font-size: 0.875em !important;
+            }
+        }
+        .button {
+            border-radius: 0px !important;
+        }
+    }
+
+    /* Advanced Search Control */
+    #advanced-search-container {
+        select {
+            background-image: none !important;
+        }
+        .button {
+            border-radius: 0px !important;
+        }
+    }
+
+    /* Filters panel */
+    #filters-modal {
+        --tainacan-background-color: white;
+        width: 100%;
+        box-shadow: var(--boxShadow, 6px 6px black);
+
+        .modal-content {
+            padding: 0;
+
+            h3 {
+                font-size: 1.25em;
+                letter-spacing: 2px;
+            }
+            @media screen and (max-width: 768px){
+                padding: 0px 0px 0px 6vw;
+            }
+
+            #filters-items-list {
+                background-color: white;
+                border: 1px solid #cbcbcb;
+                padding: 20px;
+                margin: 0px;
+
+                .filters-components-list {
+                    margin-bottom: 24px;
+                }
+                .datepicker .datepicker-header .pagination {
+                    padding: 0px;
+
+                    .pagination-previous,
+                    .pagination-next {
+                        min-height: 14px !important;
+                        width: auto !important;
+                        height: auto !important;
+                        box-shadow: none !important;
+                    }
+                }
+            }
+        }
+        .loading-background {
+            background: transparent;
+        }
+        &.tainacan-filter-list-fixed {
+            left: 14px;
+        }
+    }
+
+    /* Items list container */
+    #items-list-area {
+        padding: 6px 4px;
+        width: 100%;
+
+        .filter-tags-list {
+            padding: 6px 12px 12px 12px;
+            background-color: var(--backgroundColor, #f2f2f2);
+            border: 1px solid #cbcbcb;
+            margin: -7px;
+            box-shadow: 0px 3px #000;
+            width: calc(100% + 14px);
+            position: relative;
+            z-index: 99999;
+        }
+        #items-list-results {
+            .table-container {
+                min-width: 100%;
+                padding-top: 14px;
+                padding-left: 10px;
+                padding-bottom: 14px;
+                padding-right: 10px;
+            }
+            
+            /* Tainacan items list view modes */
+            .tainacan-masonry-container .tainacan-masonry-item,
+            .tainacan-records-container .tainacan-record,
+            .tainacan-cards-container .tainacan-card,
+            .tainacan-list-container .tainacan-list {
+                border-radius: 0;
+                border-width: 2px;
+                border-style: solid;
+                border-color: #211e17;
+                box-shadow: var(--boxShadow, 6px 6px black);
+                overflow: hidden;
+                transition: box-shadow ease 0.3s, border-color ease 0.3s;
+
+                &:hover {
+                    box-shadow: -5px 5px black;
+                    border-color: black;
+                }
+
+                .metadata-title p {
+                    font-weight: 500;
+                }
+                .metadata-value,
+                .metadata-label {
+                    font-size: 0.85em !important;
+                    font-family: 'montserrat','HelveticaNeue','Helvetica Neue','Helvetica-Neue',Helvetica,Arial,sans-serif !important;
+                }
+                
+                .metadata-value {
+                    margin-top: 0.125rem;
+                }
+            }
+            .tainacan-records-container .tainacan-record,
+            .tainacan-list-container .tainacan-list {
+                background-color: var(--tainacan-item-background-color, white) !important;
+            }
+            .tainacan-masonry-container .tainacan-masonry-item {
+                display: flex !important;
+                flex-direction: column-reverse;
+            }
+            .tainacan-cards-container .tainacan-card {
+                min-height: 215px;
+                max-height: 215px;
+
+                .media .list-metadata {
+                    padding: 0.125em 1.375em !important;
+
+                    p.metadata-description {
+                        max-height: 12.75em !important;
+                        line-height: 1.25em;
+                    }
+                }
+            }
+            .tainacan-table {
+                padding: 0 12px;
+            }
+            .tainacan-slide-main-view {
+                iframe {
+                    border: none;
+                    border-radius: 0;
+                }
+            }
+            .tainacan-slides-list {
+                .swiper-slide img {
+                    border-radius: 0;
+                    padding-bottom: 0;
+                }
+            }
+
+            /* Pagination */
+            .pagination-area {
+                border-top: none;
+                margin-left: 12px;
+                margin-right: 12px;
+
+                .pagination {
+                    padding: 3px;
+                    line-height: 35px;
+                    top: 1px;
+
+                    span,
+                    a {
+                        align-items: center;
+                        display: inline-flex;
+                        justify-content: center;
+                        height: 1.5rem;
+                        width: 1.5rem;
+                        float: none;
+                    }
+                    .pagination-link {
+                        background: white;
+                        color: black !important;
+
+                        &.is-current {
+                            font-weight: bold;
+                        }
+                    }
+                }
+
+                .select select {
+                    background: none !important;
+                }
+            }
+        }
+    }
+
+    /* Advanced Search */
+    .advanced-search-criteria-title hr {
+        display: none;
+    }
+
+    /* Inputs style */
+    .control.has-icons-right .input,
+    .control.has-icons-right .select select {
+        padding-right: 2.5em !important;
+    }
+    .control.has-icons-left .input,
+    .control.has-icons-left .select select {
+        padding-left: 2.5em !important;
+    }
+    input.input,
+    .input,
+    textarea.textarea,
+    .textarea,
+    input[type="color"].input,
+    input[type="date"].input,
+    input[type="datetime-local"].input,
+    input[type="datetime"].input,
+    input[type="email"].input,
+    input[type="number"].input,
+    input[type="month"].input,
+    input[type="password"].input,
+    input[type="search"].input,
+    input[type="tel"].input,
+    input[type="text"].input,
+    input[type="time"].input,
+    input[type="url"].input,
+    input[type="week"].input {
+        border-radius: 0 !important;
+        border: 1px solid var(--tainacan-input-border-color);
     }
 }
 
-.tainacan-modal .tainacan-form .form-submit .button.is-success,
-.theme-items-list .tainacan-form .form-submit .button.is-success,
-.tainacan-modal .tainacan-form .form-submit .button.is-outlined,
-.theme-items-list .tainacan-form .form-submit .button.is-outlined {
-    padding: 1.2142857em 1.42857142em !important;
-    font-weight: bold !important;
-    border-radius: 30px !important;
+/* Extra classes applied from customizer */
+.page {
+    &.has-filters-panel-style-boxed #filters-modal .modal-content #filters-items-list {
+        border-radius: 0;
+        background-color: var(--tainacan-item-background-color, white);
+        box-shadow: var(--boxShadow, 6px 6px black);
+    }
 }
 
-.tainacan-modal:not(#filters-modal) .modal-background {
-    background-color: rgba(255,255,255,0.6) !important;
-}
-.tainacan-modal:not(#filters-modal) .tainacan-modal-content,
-.tainacan-modal:not(#filters-modal) .modal-card {
-    box-shadow: 0 0 30px 0 rgba(0,0,0,.12) !important;
-    border-radius: 24px !important;
+/* Tooltips and Modals are outside of the items list div */
+body:not(.tainacan-admin-page) {
+
+    .tooltip,
+    .tainacan-modal-content {
+        --tainacan-secondary: #b6181e;
+        --tainacan-primary: #b89a9b;
+        --boxShadow: 6px 6px black;
+        --tainacan-item-background-color: white;
+        --tainacan-item-hover-background-color: white;
+        --tainacan-item-heading-hover-background-color: white;
+        --tainacan-success: #333;
+        --tainacan-media-main-carousel-height: 30vh;
+    }
+
+    .tainacan-modal-content {
+        border-radius: 0;
+
+        .tainacan-modal-title {
+            hr {
+                display: none;
+            }
+        }
+        .tabs li {
+            margin-bottom: 0px;
+        }
+        .modal-card-body {
+            background-color: var(--tainacan-item-background-color, white);
+        }
+        .button {
+            border-radius: 0px !important;
+        }
+    }
 }
 
-.tainacan-modal .b-numberinput.is-grouped .control input.input {
-    border-radius: 0px !important;
-}
-.tainacan-modal .date-filter-container >.dropdown .dropdown-trigger>.button,
-.tainacan-modal .numeric-filter-container>.dropdown .dropdown-trigger>.button {
-    border-bottom-right-radius: 0px !important;
-    border-top-right-radius: 0px !important;
-}
-.tainacan-modal .date-filter-container>.datepicker .dropdown .dropdown-trigger input {
-    border-bottom-left-radius: 0px !important;
-    border-top-left-radius: 0px !important;
+/* Collection Items List */
+.tainacan-collection-header {
+    display: flex;
+    padding: 36px 18px 28px 18px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--tainacan-background-color, #f8f9fb);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    --headingColor: var(--tainacan-heading-color, rgba(44, 62, 80, 1));
+    --color: var(--tainacan-label-color, #454647);
+    --linkInitialColor: #b6181e;
+
+    .tainacan-collection-header__box {
+        width: 100%;
+        padding: 20px;
+
+        .page-title {
+            margin-top: 0px;
+            margin-bottom: 4px;
+            display: inline-block;
+        }
+        .ct-title-label {
+            font-weight: normal;
+            &::after {
+                content: ': ';
+            }
+        }
+        .collection-thumbnail {
+            max-width: calc(var(--tainacan-filter-menu-width-theme, 20%) - 24px);
+            float: left;
+            margin-right: 24px;
+
+            img {
+                border-radius: 0;
+            }
+        }
+    }
 }
 
-#filter-menu-compress-button .icon {
-    top: -2px !important;
-    position: relative;
+.page.has-page-header-style-boxed {
+    .theme-items-list:not(.is-fullscreen) {
+        grid-template-columns: 1fr minmax(auto, 1300px) 1fr;
+    }
+    .tainacan-collection-header .tainacan-collection-header__box {
+        width: var(--maxSiteWidth, 1290px);
+        border-radius: 0;
+        background-color: var(--tainacan-item-background-color,#fff);
+        box-shadow: var(--boxShadow,0 12px 18px -6px rgba(34,56,101,.04));
+    }
+    .search-control {
+        background-color: var(--tainacan-item-background-color, white);
+        box-shadow: var(--boxShadow, 6px 6px black);
+    }
+
 }
