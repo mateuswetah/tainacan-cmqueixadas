@@ -1,6 +1,6 @@
 {
   "name": "tainacan-cmqueixadas",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Plugin para integrar o Tainacan ao tema usado no site CMQueixadas",
   "main": "index.js",
   "scripts": {
