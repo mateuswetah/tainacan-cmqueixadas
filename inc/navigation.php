@@ -3,8 +3,8 @@
 /**
  * Retrieves an item adjacent link, either using WP strategy or Tainacan plugin tainacan_get_adjacent_items()
  */
-if ( !function_exists('tainacan_cmqueixadas_get_adjacent_item_links') ) {
-	function tainacan_cmqueixadas_get_adjacent_item_links() {
+if ( !function_exists('tainacan_cfbm_get_adjacent_item_links') ) {
+	function tainacan_cfbm_get_adjacent_item_links() {
 		
 		// We use Tainacan own method for obtaining previous and next item objects
 		if (function_exists('tainacan_get_adjacent_items') && isset($_GET['pos'])) {
@@ -38,15 +38,15 @@ if ( !function_exists('tainacan_cmqueixadas_get_adjacent_item_links') ) {
 
 		if (function_exists('tainacan_get_adjacent_items') && isset($_GET['pos'])) {
 			if ($adjacent_items['next']) {
-				$next_thumb = $adjacent_items['next']['thumbnail']['tainacan-medium'][0];
+				$next_thumb = $adjacent_items['next']['thumbnail']['tainacan-small'][0];
 			}
 			if ($adjacent_items['previous']) {
-				$previous_thumb = $adjacent_items['previous']['thumbnail']['tainacan-medium'][0];
+				$previous_thumb = $adjacent_items['previous']['thumbnail']['tainacan-small'][0];
 			}
 		} else {
 			//Get the thumnail url of the previous and next post
-			$previous_thumb = get_the_post_thumbnail_url( get_previous_post(), 'tainacan-medium' );
-			$next_thumb = get_the_post_thumbnail_url( get_next_post(), 'tainacan-medium' );
+			$previous_thumb = get_the_post_thumbnail_url( get_previous_post(), 'tainacan-small' );
+			$next_thumb = get_the_post_thumbnail_url( get_next_post(), 'tainacan-small' );
 		}
 
 		$previous_post_image_output = isset($previous_thumb) ? $previous_thumb : '';
@@ -55,54 +55,24 @@ if ( !function_exists('tainacan_cmqueixadas_get_adjacent_item_links') ) {
 		// Creates the links
 		$previous = $previous_link_url === false ? '' : (
 			'<a 
-					class="avia-post-nav avia-post-prev ' . (!empty($previous_post_image_output) ? 'with-image' : '') . '"
+					class="btPrevNext btPrev"
 					href="'. $previous_link_url . '">
-				<span 
-						class="label iconfont"
-						aria-hidden="true"
-						data-av_icon=""
-						data-av_iconfont="entypo-fontello">
-				</span>
-				<span class="entry-info-wrap">
-					<span class="entry-info">
-						<span class="entry-title">' . (!empty( $previous_title ) ? $previous_title : '') .'</span>
-						<span class="entry-image">
-							<img 
-									src="' . $previous_post_image_output . '"
-									class="attachment-thumbnail size-thumbnail wp-post-image"
-									alt=""
-									loading="lazy"
-									width="80"
-									height="80">
-						</span>
-					</span>
-				</span>
+				' . (!empty($previous_post_image_output) ? ('<div class="btPrevNextImage" style="background-image:url(\'' . $previous_post_image_output  .'\');"></div>') : '') . '	
+				<div class="btPrevNextItem">
+					<div class="btPrevNextDir">' . __('Anterior', 'tainacan-cfbm') . '</div>
+					' . (!empty( $previous_title ) ? ('<div class="btPrevNextTitle">' . $previous_title . '</div>') : '' ) . '
+				</div>
 			</a>');
 
 		$next = $next_link_url === false ? '' : (
 			'<a 
-					class="avia-post-nav avia-post-next ' . (!empty($next_post_image_output) ? 'with-image' : '') . '"
+					class="btPrevNext btNext ' . (!empty($next_post_image_output) ? 'with-image' : '') . '"
 					href="'. $next_link_url . '">
-				<span 
-						class="label iconfont"
-						aria-hidden="true"
-						data-av_icon=""
-						data-av_iconfont="entypo-fontello">
-				</span>
-				<span class="entry-info-wrap">
-					<span class="entry-info">
-						<span class="entry-image">
-							<img 
-									src="' . $next_post_image_output . '"
-									class="attachment-thumbnail size-thumbnail wp-post-image"
-									alt=""
-									loading="lazy"
-									width="80"
-									height="80">
-						</span>
-						<span class="entry-title">' . (!empty( $next_title ) ? $next_title : '') .'</span>
-					</span>
-				</span>
+				' . (!empty($next_post_image_output) ? ('<div class="btPrevNextImage" style="background-image:url(\'' . $next_post_image_output  .'\');"></div>') : '') . '
+				<div class="btPrevNextItem">
+					<div class="btPrevNextDir">' . __('Próximo', 'tainacan-cfbm') . '</div>
+					' . (!empty( $next_title ) ? ('<div class="btPrevNextTitle">' . $next_title . '</div>') : '' ) . '
+				</div>
 			</a>'
 		);
 
@@ -113,8 +83,8 @@ if ( !function_exists('tainacan_cmqueixadas_get_adjacent_item_links') ) {
 /**
  * Outputs Tainacan custom logic for items navigation
  */
-if ( !function_exists('tainacan_cmqueixadas_item_navigation') ) {
-	function tainacan_cmqueixadas_item_navigation() {
+if ( !function_exists('tainacan_cfbm_item_navigation') ) {
+	function tainacan_cfbm_item_navigation() {
 		$next = '';
 		$previous = '';
 			
@@ -123,24 +93,28 @@ if ( !function_exists('tainacan_cmqueixadas_item_navigation') ) {
 			'previous' => ''
 		];
 		
-		$adjacent_links = tainacan_cmqueixadas_get_adjacent_item_links();
+		$adjacent_links = tainacan_cfbm_get_adjacent_item_links();
 	
 		$previous = $adjacent_links['previous'];
 		$next = $adjacent_links['next'];
 		
 		?>
 			<?php if ($previous !== '' || $next !== '') : ?>
-			<nav class="tainacan-single-item__post-navigation">
-			<?php
-				if ( $previous !== '' ) {
-					echo $previous;
-				}
+			<section class="gutter btPrevNextNav">
+				<div class="port">
+					<div class="btPrevNextNav">
+					<?php
+						if ( $previous !== '' ) {
+							echo $previous;
+						}
 
-				if ( $next !== '' ) {
-					echo $next;
-				}
-				?>
-			</nav>
+						if ( $next !== '' ) {
+							echo $next;
+						}
+					?>
+					</div>
+				</div>
+			</section>
 			<?php endif; ?>
 		<?
 	}

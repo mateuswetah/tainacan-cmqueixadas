@@ -1,3 +1,3 @@
-# Tainacan CMQueixadas
+# Tainacan CFBM
 
-## Plugin para criar compatibilidade das páginas do Tainacan com o tema do site CMQueixadas.
+## Plugin para criar compatibilidade das páginas do Tainacan com o tema do site CFBM.

@@ -1,7 +1,7 @@
 {
-  "name": "tainacan-cmqueixadas",
-  "version": "0.1.2",
-  "description": "Plugin para integrar o Tainacan ao tema usado no site CMQueixadas",
+  "name": "tainacan-cfbm",
+  "version": "0.0.3",
+  "description": "Plugin para integrar o Tainacan ao tema usado no site CFBM - NÃO REMOVER",
   "main": "index.js",
   "scripts": {
     "compile-styles": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 sass/style.scss style.css",
@@ -10,11 +10,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mateuswetah/tainacan-cmqueixadas.git"
+    "url": "git+https://github.com/mateuswetah/tainacan-cfbm.git"
   },
   "author": "mateuswetah",
   "license": "ISC",
-  "homepage": "https://github.com/mateuswetah/tainacan-cmqueixadas#readme",
+  "homepage": "https://github.com/mateuswetah/tainacan-cfbm#readme",
   "devDependencies": {
     "clean-css-cli": "^4.3.0",
     "node-sass": "^4.14.1"
